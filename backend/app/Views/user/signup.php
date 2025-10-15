@@ -7,7 +7,6 @@
     <title>Sign Up | Streetline Supply</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="icon" type="image/png" href="<?= base_url('images/logo.png') ?>">
-
     <!-- 🎨 Fonts & Theme -->
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;600;800&display=swap');
@@ -16,8 +15,6 @@
             font-family: 'Inter', sans-serif;
             background-color: #000;
             color: #fff;
-
-
         }
 
         .text-vermillion {
@@ -39,7 +36,6 @@
 </head>
 
 <body class="flex flex-col bg-black min-h-screen text-white">
-
     <!-- ✅ Header -->
     <?= view('components/header', [
         'brandTitle' => 'Streetline Supply',
@@ -52,7 +48,6 @@
         ],
         'cta' => ['label' => 'Shop Now', 'href' => base_url('shop')],
     ]) ?>
-
     <!-- ✅ Signup Section -->
     <main class="flex flex-grow justify-center items-center bg-gradient-to-b from-black via-[#0a0a0a] to-[#1a1a1a] px-6 py-20">
         <div class="bg-white shadow-2xl p-10 rounded-2xl w-full max-w-md text-black hover:scale-[1.01] transition duration-300 transform">
@@ -60,23 +55,22 @@
             <p class="mb-6 text-gray-600 text-center">
                 Sign up for your <strong>Streetline Supply</strong> account.
             </p>
-
             <form action="<?= base_url('users/register') ?>" method="post" class="space-y-4">
                 <input type="text" name="fullname" placeholder="Full Name" required
                     class="px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-vermillion w-full text-black transition placeholder-gray-500">
-
                 <input type="email" name="email" placeholder="Email Address" required
                     class="px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-vermillion w-full text-black transition placeholder-gray-500">
-
                 <input type="text" name="username" placeholder="Username" required
                     class="px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-vermillion w-full text-black transition placeholder-gray-500">
-
                 <input type="password" name="password" placeholder="Password" required
                     class="px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-vermillion w-full text-black transition placeholder-gray-500">
-
                 <input type="password" name="confirm_password" placeholder="Confirm Password" required
                     class="px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-vermillion w-full text-black transition placeholder-gray-500">
 
+                <button type="submit"
+                    class="bg-vermillion hover:bg-vermillion-dark py-3 rounded-md w-full font-bold text-white tracking-wide transition duration-300">
+                    Sign Up
+                </button>
             </form>
 
             <p class="mt-6 text-gray-700 text-sm text-center">
@@ -86,6 +80,13 @@
         </div>
     </main>
 
+    <!-- ✅ CTA Section -->
+    <?= view('components/cta', [
+        'title' => 'Own the Streets with Streetline Supply',
+        'subtitle' => 'High-quality streetwear designed for the bold.',
+        'button_label' => 'Shop the Collection',
+        'button_link' => '/shop'
+    ]) ?>
     <!-- ✅ Footer -->
     <?= view('components/footer', [
         'brandTitle' => 'Streetline Supply Co.',

@@ -33,7 +33,6 @@
 </head>
 
 <body class="bg-black font-sans text-white">
-
     <!-- ✅ Header -->
     <?= view('components/header', [
         'brandTitle' => 'Streetline Supply',
@@ -46,12 +45,10 @@
         ],
         'cta' => ['label' => 'Shop Now', 'href' => base_url('shop')],
     ]) ?>
-
     <!-- ✅ Roadmap Timeline -->
     <main class="px-6 md:px-12 py-20">
         <div class="mx-auto max-w-5xl">
             <h1 class="mb-12 font-extrabold text-vermillion text-4xl text-center">Our Roadmap</h1>
-
             <div class="relative pl-6 border-gray-700 border-l">
                 <!-- Phase Items -->
                 <?php
@@ -61,11 +58,60 @@
                     ['title' => 'Phase 3: Skate Community Buildup (Q3 2026)', 'desc' => 'Introduced sponsorships for local skaters, community skate jams, and Streetline Sessions — a monthly event blending music, skating, and fashion.'],
                     ['title' => 'Phase 4: Digital Presence & Merch Drops (Q1 2027)', 'desc' => 'Expanded our online store with exclusive seasonal drops, digital lookbooks, and social media campaigns featuring local talent and street culture stories.'],
                     ['title' => 'Phase 5: Expansion (Future)', 'desc' => 'Plan to open flagship stores across the Philippines and collaborate with international streetwear brands while maintaining our authentic local roots.']
+
                 ];
                 ?>
+                <!-- ✅ Phase 6: CRUD Implementation Table -->
+                <section class="bg-gray-900 px-6 md:px-12 py-16 text-white">
+                    <div class="mx-auto max-w-5xl">
+                        <h2 class="mb-6 font-bold text-vermillion text-3xl text-center">
+                            CRUD Implementation (Development Phase)
+                        </h2>
+
+                        <p class="mb-8 text-gray-300 text-center">
+                            Integrated Create, Read, Update, and Delete (CRUD) functionality across the platform.
+                        </p>
+
+                        <div class="overflow-x-auto">
+                            <table class="border border-gray-700 rounded-lg min-w-full overflow-hidden">
+                                <thead class="bg-vermillion text-white">
+                                    <tr>
+                                        <th class="px-6 py-3 font-semibold text-left">User Type</th>
+                                        <th class="px-6 py-3 font-semibold text-left">CRUD Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="bg-gray-800 divide-y divide-gray-700">
+                                    <tr>
+                                        <td class="px-6 py-4 font-medium text-white">Buyers</td>
+                                        <td class="px-6 py-4 text-gray-300">
+                                            Register, update profiles, and manage accounts.
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-6 py-4 font-medium text-white">Shoppers</td>
+                                        <td class="px-6 py-4 text-gray-300">
+                                            Add, update, or remove products from their cart.
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-6 py-4 font-medium text-white">Admins</td>
+                                        <td class="px-6 py-4 text-gray-300">
+                                            Create, edit, or delete product listings for gear, apparel, and accessories.
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
 
                 <?php foreach ($phases as $phase): ?>
                     <div class="relative mb-12">
+
+                        Expand All
+
+                        @@ -74,7 +118,12 @@
+
                         <div class="-left-1.5 absolute bg-vermillion border border-white rounded-full w-3 h-3"></div>
                         <h2 class="mb-2 font-semibold text-vermillion text-2xl"><?= esc($phase['title']) ?></h2>
                         <p class="text-gray-300"><?= esc($phase['desc']) ?></p>
@@ -74,7 +120,6 @@
             </div>
         </div>
     </main>
-
     <!-- ✅ Footer -->
     <?= view('components/footer', [
         'brandTitle' => 'Streetline Supply Co.',
