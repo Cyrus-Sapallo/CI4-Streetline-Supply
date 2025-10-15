@@ -108,6 +108,12 @@
                 <?php foreach ($phases as $phase): ?>
                     <div class="relative mb-12">
 
+
+
+
+
+
+
                         Expand All
 
                         @@ -74,7 +118,12 @@
@@ -120,13 +126,18 @@
             </div>
         </div>
     </main>
+    <?= view('components/cta', [
+        'title' => 'Own the Streets with Streetline Supply',
+        'subtitle' => 'High-quality streetwear designed for the bold.',
+        'button_label' => 'Shop the Collection',
+        'button_link' => '/shop'
+    ]) ?>
     <!-- ✅ Footer -->
     <?= view('components/footer', [
         'brandTitle' => 'Streetline Supply Co.',
         'tagline' => 'Skate gear for real riders.',
         'logo' => base_url('images/logo.png'),
     ]) ?>
-
 </body>
 
 </html>
