@@ -5,14 +5,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Streetline Supply Store</title>
-
     <!-- Tailwind CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" />
     <link rel="icon" type="image/png" href="<?= base_url('images/logo.png') ?>">
 </head>
 
 <body class="bg-black font-sans text-white">
-
     <!-- ✅ Header -->
     <?= view('components/header', [
         'brandTitle' => 'Streetline Supply',
@@ -25,10 +23,8 @@
         ],
         'cta' => ['label' => 'Shop Now', 'href' => base_url('shop')],
     ]) ?>
-
     <!-- ✅ Main Content -->
     <main class="mx-auto px-6 py-12 max-w-6xl">
-
         <!-- 🛹 Hero Section -->
         <section class="items-center gap-8 grid grid-cols-1 md:grid-cols-2">
             <div class="order-2 md:order-1">
@@ -38,13 +34,11 @@
                 <p class="mt-4 max-w-xl text-gray-300">
                     We live and breathe street culture. Every piece tells a story of rebellion and self-expression.
                 </p>
-
                 <div class="flex flex-wrap gap-3 mt-6">
                     <a href="#" class="hover:bg-vermillion px-5 py-2 border border-vermillion rounded-lg text-vermillion hover:text-white">
                         Request Assistance
                     </a>
                 </div>
-
                 <div class="mt-6">
                     <div class="flex items-center gap-3 bg-black px-4 py-3 border border-gray-600 rounded-full">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -58,14 +52,12 @@
                     </div>
                 </div>
             </div>
-
             <div class="order-1 md:order-2">
                 <div class="shadow-lg rounded-2xl overflow-hidden">
                     <img src="<?= base_url('images/HarajukuStreetwear.jpg') ?>" alt="harajuku streetwear" class="w-full">
                 </div>
             </div>
         </section>
-
         <!-- 💥 Features -->
         <section class="gap-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mt-12">
             <?php
@@ -89,15 +81,10 @@
                     'href' => base_url('shop/grind-supply')
                 ],
             ];
-
             foreach ($features as $feature):
                 echo view('components/cards/card_product', $feature);
             endforeach;
             ?>
-
-
-
-
         </section>
         <section class="gap-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mt-16">
             <?= view('components/cards/card_feature', [
@@ -105,21 +92,17 @@
                 'title' => 'Fast Shipping',
                 'excerpt' => 'We deliver nationwide in record time.'
             ]) ?>
-
             <?= view('components/cards/card_feature', [
                 'icon' => '🧢',
                 'title' => 'Quality Gear',
                 'excerpt' => 'Every piece is built for real riders and tough sessions.'
             ]) ?>
-
             <?= view('components/cards/card_feature', [
                 'icon' => '💬',
                 'title' => '24/7 Support',
                 'excerpt' => 'Hit us up anytime — our crew always has your back.'
             ]) ?>
         </section>
-
-
         <!-- 📦 Package Summary -->
         <section class="bg-black mt-12 p-6 border border-vermillion-dark rounded-lg">
             <div class="md:flex md:justify-between md:items-center gap-8">
@@ -141,7 +124,6 @@
                 </div>
             </div>
         </section>
-
         <!-- 🧭 Steps -->
         <section class="mt-12">
             <h3 class="mb-6 font-bold text-vermillion text-3xl uppercase tracking-wider">
@@ -158,11 +140,23 @@
             </div>
         </section>
 
-        <!-- ✅ Footer -->
-        <?= view('components/footer', [
-            'brandTitle' => 'Streetline Supply Co.',
-            'tagline' => 'Skate gear for real riders.',
-            'logo' => base_url('images/logo.png'),
-        ]) ?>
+        <!-- 🚨 CTA Section -->
+    </main>
+    <?= view('components/cta', [
+        'title' => 'Own the Streets with Streetline Supply',
+        'subtitle' => 'High-quality streetwear designed for the bold.',
+        'button_label' => 'Shop the Collection',
+        'button_link' => '/shop'
+    ]) ?>
+
+
+    <!-- ✅ Footer -->
+    <?= view('components/footer', [
+        'brandTitle' => 'Streetline Supply Co.',
+        'tagline' => 'Skate gear for real riders.',
+        'logo' => base_url('images/logo.png'),
+    ]) ?>
 
 </body>
+
+</html>

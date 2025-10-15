@@ -74,6 +74,17 @@
             </form>
 
             <p class="mt-6 text-gray-700 text-sm text-center">
+
+
+
+
+
+
+
+                Expand All
+
+                @@ -84,6 +88,15 @@ class="px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring
+
                 Already have an account?
                 <a href="<?= base_url('login') ?>" class="text-vermillion hover:underline transition">Sign In</a>
             </p>
@@ -87,11 +98,14 @@
         'button_label' => 'Shop the Collection',
         'button_link' => '/shop'
     ]) ?>
+
+
     <!-- ✅ Footer -->
     <?= view('components/footer', [
         'brandTitle' => 'Streetline Supply Co.',
         'tagline' => 'Skate gear for real riders.',
         'logo' => base_url('images/logo.png'),
     ]) ?>
-
 </body>
+
+</html>
