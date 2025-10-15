@@ -1,9 +1,6 @@
-
 <?php
 
 namespace App\Controllers;
-
-use function view;
 
 class Users extends BaseController
 {
@@ -15,5 +12,9 @@ class Users extends BaseController
     public function login()
     {
         return view('user/loginPage');
+    }
+    public function signup()
+    {
+        return view('user/signup');
     }
 }
