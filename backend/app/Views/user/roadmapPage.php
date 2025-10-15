@@ -1,64 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roadmap | Streetline Supply</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" type="image/png" href="<?= base_url('images/logo.png') ?>">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;600;800&display=swap');
 
-<!-- Roadmap Section -->
-<main class="flex-grow px-6 md:px-12 py-16">
-    <div class="mx-auto max-w-5xl">
-        <h1 class="mb-12 font-extrabold text-white text-4xl md:text-5xl text-center">
-            Streetline Supply Road Map
-        </h1>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
 
-        <!-- Timeline -->
-        <div class="relative pl-6 border-gray-700 border-l">
-            <!-- Phase 1 -->
-            <div class="relative mb-12">
-                <div class="-left-1.5 absolute bg-indigo-500 border border-white rounded-full w-3 h-3"></div>
-                <h2 class="mb-2 font-semibold text-vermillion text-2xl">Phase 1: Foundation (Q1 2025)</h2>
-                <p class="text-gray-300">
-                    Launched the official Streetline Supply Store and established our first local skatewear line. Focused on premium-quality materials and authentic Manila street culture design.
-                </p>
-            </div>
+        .text-vermillion {
+            color: #D64045;
+        }
 
-            <!-- Phase 2 -->
-            <div class="relative mb-12">
-                <div class="-left-1.5 absolute bg-indigo-500 border border-white rounded-full w-3 h-3"></div>
-                <h2 class="mb-2 font-semibold text-vermillion text-2xl">Phase 2: LOCAL COLLABORATIONS (Q2 2026)</h2>
-                <p class="text-gray-300">
-                    Partnered with local skate crews, graffiti artists, and musicians to release limited collab collections and host pop-up events that celebrate street art and skating.
-                </p>
-            </div>
+        .bg-vermillion {
+            background-color: #D64045;
+        }
 
-            <!-- Phase 3 -->
-            <div class="relative mb-12">
-                <div class="-left-1.5 absolute bg-indigo-500 border border-white rounded-full w-3 h-3"></div>
-                <h2 class="mb-2 font-semibold text-vermillion text-2xl">Phase 3: SKATE COMMUNITY BUILDUP (Q3 2026)</h2>
-                <p class="text-gray-300">
-                    Introduced sponsorships for local skaters, community skate jams, and Streetline Sessions — a monthly event blending music, skating, and fashion.
-                </p>
-            </div>
+        .border-vermillion {
+            border-color: #D64045;
+        }
 
-            <!-- Phase 4 -->
-            <div class="relative mb-12">
-                <div class="-left-1.5 absolute bg-indigo-500 border border-white rounded-full w-3 h-3"></div>
-                <h2 class="mb-2 font-semibold text-vermillion text-2xl">Phase 4: DIGITAL PRESENCE & MERCH DROPS (Q1 2027)</h2>
-                <p class="text-gray-300">
-                    Expanded our online store with exclusive seasonal drops, digital lookbooks, and social media campaigns featuring local talent and street culture stories.
-                </p>
-            </div>
+        .font-bebas {
+            font-family: 'Bebas Neue', cursive;
+        }
+    </style>
+</head>
 
-            <!-- Phase 5 -->
-            <div class="relative">
-                <div class="-left-1.5 absolute bg-indigo-500 border border-white rounded-full w-3 h-3"></div>
-                <h2 class="mb-2 font-semibold text-vermillion text-2xl">Phase 5: Expansion (Future)</h2>
-                <p class="text-gray-300">
-                    Plan to open flagship stores in key cities around the Philippines and collaborate with international streetwear brands while maintaining our authentic local roots.
-                </p>
+<body class="bg-black font-sans text-white">
+
+
+    <!-- ✅ Header -->
+    <?= view('components/header', [
+        'brandTitle' => 'Streetline Supply',
+        'brandTagline' => 'Skate gear for real riders.',
+        'logo' => base_url('images/logo.png'),
+        'nav' => [
+            ['label' => 'Home', 'href' => base_url('/')],
+            ['label' => 'Roadmap', 'href' => base_url('roadmap'), 'active' => true],
+            ['label' => 'Mood Board', 'href' => base_url('moodboard')],
+        ],
+        'cta' => ['label' => 'Shop Now', 'href' => base_url('shop')],
+    ]) ?>
+
+    <!-- ✅ Roadmap Timeline -->
+    <main class="px-6 md:px-12 py-20">
+        <div class="mx-auto max-w-5xl">
+            <h1 class="mb-12 font-extrabold text-vermillion text-4xl text-center">Our Roadmap</h1>
+
+            <div class="relative pl-6 border-gray-700 border-l">
+                <!-- Phase Items -->
+                <?php
+                $phases = [
+                    ['title' => 'Phase 1: Foundation (Q1 2025)', 'desc' => 'Launched the official Streetline Supply Store and established our first local skatewear line. Focused on premium-quality materials and authentic Manila street culture design.'],
+                    ['title' => 'Phase 2: Local Collaborations (Q2 2026)', 'desc' => 'Partnered with local skate crews, graffiti artists, and musicians to release limited collab collections and host pop-up events celebrating street art and skating.'],
+                    ['title' => 'Phase 3: Skate Community Buildup (Q3 2026)', 'desc' => 'Introduced sponsorships for local skaters, community skate jams, and Streetline Sessions — a monthly event blending music, skating, and fashion.'],
+                    ['title' => 'Phase 4: Digital Presence & Merch Drops (Q1 2027)', 'desc' => 'Expanded our online store with exclusive seasonal drops, digital lookbooks, and social media campaigns featuring local talent and street culture stories.'],
+                    ['title' => 'Phase 5: Expansion (Future)', 'desc' => 'Plan to open flagship stores across the Philippines and collaborate with international streetwear brands while maintaining our authentic local roots.']
+                ];
+                ?>
+
+                <?php foreach ($phases as $phase): ?>
+                    <div class="relative mb-12">
+                        <div class="-left-1.5 absolute bg-vermillion border border-white rounded-full w-3 h-3"></div>
+                        <h2 class="mb-2 font-semibold text-vermillion text-2xl"><?= esc($phase['title']) ?></h2>
+                        <p class="text-gray-300"><?= esc($phase['desc']) ?></p>
+                    </div>
+                <?php endforeach; ?>
             </div>
         </div>
-    </div>
-</main>
+    </main>
 
-<script src="https://cdn.tailwindcss.com"></script>
+
+
 
 </body>
