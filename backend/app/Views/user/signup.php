@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Streetline Supply Store | Login</title>
+    <title>Streetline Supply Store | Sign Up</title>
     <style>
         body {
             font-family: 'Poppins', sans-serif;
@@ -33,37 +33,37 @@
 
         nav a:hover {
             color: #E34234;
-            /* Vermillion */
         }
 
-        .login-container {
+        .signup-container {
             display: flex;
             justify-content: center;
             align-items: center;
             height: 80vh;
         }
 
-        .login-box {
+        .signup-box {
             background-color: #fff;
             color: #000;
             border-radius: 12px;
             padding: 40px;
-            width: 380px;
+            width: 400px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
             text-align: center;
         }
 
-        .login-box h2 {
+        .signup-box h2 {
             margin-bottom: 10px;
             color: #111;
         }
 
-        .login-box p {
+        .signup-box p {
             font-size: 0.9rem;
             color: #555;
         }
 
         input[type="text"],
+        input[type="email"],
         input[type="password"] {
             width: 100%;
             padding: 12px;
@@ -75,7 +75,6 @@
         button {
             width: 100%;
             background-color: #E34234;
-            /* Vermillion */
             color: #fff;
             border: none;
             padding: 12px;
@@ -113,29 +112,37 @@
     <header>
         <h1>Streetline Supply Store</h1>
         <nav>
-            <a href="#">Home</a>
-            <a href="#">Road Map</a>
+            <a href="/">Home</a>
+            <a href="/roadmap">Road Map</a>
         </nav>
     </header>
 
-    <div class="login-container">
-        <div class="login-box">
-            <h2>Welcome Back</h2>
-            <p>Sign in to your <strong>Streetline Supply</strong> account.</p>
-            <form action="<?= base_url('Users/login') ?>" method="post">
-                <input type="text" name="username" placeholder="Email Address or Username" required>
-                <input type="password" name="password" placeholder="Enter your password" required>
-                <button type="submit">Sign In</button>
+    <div class="signup-container">
+        <div class="signup-box">
+            <h2>Create Account</h2>
+            <p>Sign up for your <strong>Streetline Supply</strong> account.</p>
+            <form action="<?= base_url('users/signup') ?>" method="post">
+                <input type="text" name="fullname" placeholder="Full Name" required>
+                <input type="email" name="email" placeholder="Email Address" required>
+                <input type="text" name="username" placeholder="Username" required>
+                <input type="password" name="password" placeholder="Password" required>
+                <input type="password" name="confirm_password" placeholder="Confirm Password" required>
+                <button type="submit">Sign Up</button>
             </form>
-            <p style="margin-top:15px;">Don’t have an account? <a href="<?= base_url('users/signup') ?>" style="color:#E34234;">Create an account</a></p>
+            <p style="margin-top:15px;">
+                Already have an account?
+                <a href="/login" style="color:#E34234;">Sign In</a>
+            </p>
         </div>
     </div>
 
     <footer>
         STREETLINE SUPPLY CO. © 2024. ALL RIGHTS RESERVED.<br>
-        <a href="#">GEAR SERVICES</a> |
-        <a href="#">THE MOOD BOARD</a> |
-        <a href="#">ROAD MAP</a>
+        <a href="/services">GEAR SERVICES</a> |
+        <a href="/moodboard">THE MOOD BOARD</a> |
+        <a href="/roadmap">ROAD MAP</a>
     </footer>
 
 </body>
+
+</html>
