@@ -70,20 +70,55 @@
         <section class="gap-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mt-12">
             <?php
             $features = [
-                ['img' => 'snd.jpg', 'title' => 'Skate and Destroy', 'desc' => 'Offers durable skateboard parts and accessories built for every ride.'],
-                ['img' => 'hs.jpg', 'title' => 'Hoodside', 'desc' => 'Delivers streetwear made for skaters, blending comfort, style, and attitude.'],
-                ['img' => 'access.jpg', 'title' => 'Grind Supply', 'desc' => 'Packs the essential gear and tools every skater needs to keep rolling.'],
+                [
+                    'image' => base_url('images/snd.jpg'),
+                    'title' => 'Skate and Destroy',
+                    'excerpt' => 'Offers durable skateboard parts and accessories built for every ride.',
+                    'href' => base_url('shop/skate-destroy')
+                ],
+                [
+                    'image' => base_url('images/hs.jpg'),
+                    'title' => 'Hoodside',
+                    'excerpt' => 'Delivers streetwear made for skaters, blending comfort, style, and attitude.',
+                    'href' => base_url('shop/hoodside')
+                ],
+                [
+                    'image' => base_url('images/access.jpg'),
+                    'title' => 'Grind Supply',
+                    'excerpt' => 'Packs the essential gear and tools every skater needs to keep rolling.',
+                    'href' => base_url('shop/grind-supply')
+                ],
             ];
-            foreach ($features as $feature): ?>
-                <div class="bg-gray-900 shadow-lg rounded-lg overflow-hidden">
-                    <img src="<?= base_url('images/' . $feature['img']) ?>" alt="<?= $feature['title'] ?>" class="w-full h-48 object-cover">
-                    <div class="p-4">
-                        <h3 class="font-bold text-vermillion text-xl"><?= $feature['title'] ?></h3>
-                        <p class="mt-2 text-gray-300"><?= $feature['desc'] ?></p>
-                    </div>
-                </div>
-            <?php endforeach; ?>
+
+            foreach ($features as $feature):
+                echo view('components/cards/card_product', $feature);
+            endforeach;
+            ?>
+
+
+
+
         </section>
+        <section class="gap-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mt-16">
+            <?= view('components/cards/card_feature', [
+                'icon' => '⚡',
+                'title' => 'Fast Shipping',
+                'excerpt' => 'We deliver nationwide in record time.'
+            ]) ?>
+
+            <?= view('components/cards/card_feature', [
+                'icon' => '🧢',
+                'title' => 'Quality Gear',
+                'excerpt' => 'Every piece is built for real riders and tough sessions.'
+            ]) ?>
+
+            <?= view('components/cards/card_feature', [
+                'icon' => '💬',
+                'title' => '24/7 Support',
+                'excerpt' => 'Hit us up anytime — our crew always has your back.'
+            ]) ?>
+        </section>
+
 
         <!-- 📦 Package Summary -->
         <section class="bg-black mt-12 p-6 border border-vermillion-dark rounded-lg">
@@ -123,30 +158,11 @@
             </div>
         </section>
 
-        <!-- 🚨 CTA Section -->
-        <section class="bg-vermillion my-12 py-12 rounded-lg text-white text-center">
-            <h2 class="font-bold text-4xl">Need Gear Fast?</h2>
-            <p class="mx-auto mt-2 max-w-2xl">
-                Our crew is ready 24/7. Hit us up for immediate supply and support.
-            </p>
-            <div class="flex flex-wrap justify-center gap-4 mt-6">
-                <a href="tel:5551234567" class="bg-white hover:bg-gray-200 px-5 py-3 rounded-lg font-bold text-vermillion">
-                    CALL THE SUPPLY LINE
-                </a>
-                <a href="/services" class="hover:bg-white px-5 py-3 border border-white rounded-lg hover:text-vermillion">
-                    CHECK THE STOCK
-                </a>
-            </div>
-        </section>
-    </main>
-
-    <!-- ✅ Footer -->
-    <?= view('components/footer', [
-        'brandTitle' => 'Streetline Supply Co.',
-        'tagline' => 'Skate gear for real riders.',
-        'logo' => base_url('images/logo.png'),
-    ]) ?>
+        <!-- ✅ Footer -->
+        <?= view('components/footer', [
+            'brandTitle' => 'Streetline Supply Co.',
+            'tagline' => 'Skate gear for real riders.',
+            'logo' => base_url('images/logo.png'),
+        ]) ?>
 
 </body>
-
-</html>

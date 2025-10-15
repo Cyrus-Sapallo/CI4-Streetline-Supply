@@ -4,80 +4,89 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Streetline Supply | Sign Up</title>
+    <title>Sign Up | Streetline Supply</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="icon" type="image/png" href="<?= base_url('images/logo.png') ?>">
+
+    <!-- 🎨 Fonts & Theme -->
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;600;800&display=swap');
 
         body {
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Inter', sans-serif;
             background-color: #000;
             color: #fff;
-            margin: 0;
-            padding: 0;
+
+
         }
 
         .text-vermillion {
-            color: #E34234;
+            color: #D64045;
         }
 
         .bg-vermillion {
-            background-color: #E34234;
+            background-color: #D64045;
         }
 
         .bg-vermillion:hover {
-            background-color: #c33225;
+            background-color: #b83236;
+        }
+
+        .font-bebas {
+            font-family: 'Bebas Neue', cursive;
         }
     </style>
 </head>
 
-<body class="flex flex-col bg-black min-h-screen">
+<body class="flex flex-col bg-black min-h-screen text-white">
 
-    <!-- ✅ Reusable Header -->
+    <!-- ✅ Header -->
     <?= view('components/header', [
         'brandTitle' => 'Streetline Supply',
         'brandTagline' => 'Skate gear for real riders.',
         'logo' => base_url('images/logo.png'),
         'nav' => [
-            ['label' => 'Home', 'href' => base_url('/'), 'active' => false],
-            ['label' => 'Roadmap', 'href' => base_url('roadmap'), 'active' => false],
-            ['label' => 'Mood Board', 'href' => base_url('moodboard'), 'active' => false],
+            ['label' => 'Home', 'href' => base_url('/')],
+            ['label' => 'Roadmap', 'href' => base_url('roadmap')],
+            ['label' => 'Mood Board', 'href' => base_url('moodboard')],
         ],
         'cta' => ['label' => 'Shop Now', 'href' => base_url('shop')],
     ]) ?>
 
-    <!-- ✅ Sign Up Section -->
-    <main class="flex flex-grow justify-center items-center px-4">
-        <div class="bg-white shadow-lg p-8 rounded-2xl w-full max-w-md text-black text-center">
-            <h2 class="mb-2 font-semibold text-3xl">Create Account</h2>
-            <p class="mb-6 text-gray-600">Sign up for your <strong>Streetline Supply</strong> account.</p>
+    <!-- ✅ Signup Section -->
+    <main class="flex flex-grow justify-center items-center bg-gradient-to-b from-black via-[#0a0a0a] to-[#1a1a1a] px-6 py-20">
+        <div class="bg-white shadow-2xl p-10 rounded-2xl w-full max-w-md text-black hover:scale-[1.01] transition duration-300 transform">
+            <h2 class="mb-2 font-bebas text-vermillion text-3xl text-center tracking-wide">Create Account</h2>
+            <p class="mb-6 text-gray-600 text-center">
+                Sign up for your <strong>Streetline Supply</strong> account.
+            </p>
 
-            <form action="<?= base_url('users/register') ?>" method="post" class="space-y-4 text-left">
+            <form action="<?= base_url('users/register') ?>" method="post" class="space-y-4">
                 <input type="text" name="fullname" placeholder="Full Name" required
-                    class="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-vermillion w-full">
-                <input type="email" name="email" placeholder="Email Address" required
-                    class="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-vermillion w-full">
-                <input type="text" name="username" placeholder="Username" required
-                    class="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-vermillion w-full">
-                <input type="password" name="password" placeholder="Password" required
-                    class="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-vermillion w-full">
-                <input type="password" name="confirm_password" placeholder="Confirm Password" required
-                    class="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-vermillion w-full">
+                    class="px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-vermillion w-full text-black transition placeholder-gray-500">
 
-                <button type="submit" class="bg-vermillion py-2 rounded-md w-full font-semibold text-white transition-colors">
-                    Sign Up
-                </button>
+                <input type="email" name="email" placeholder="Email Address" required
+                    class="px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-vermillion w-full text-black transition placeholder-gray-500">
+
+                <input type="text" name="username" placeholder="Username" required
+                    class="px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-vermillion w-full text-black transition placeholder-gray-500">
+
+                <input type="password" name="password" placeholder="Password" required
+                    class="px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-vermillion w-full text-black transition placeholder-gray-500">
+
+                <input type="password" name="confirm_password" placeholder="Confirm Password" required
+                    class="px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-vermillion w-full text-black transition placeholder-gray-500">
+
             </form>
 
-            <p class="mt-6 text-gray-700 text-sm">
+            <p class="mt-6 text-gray-700 text-sm text-center">
                 Already have an account?
-                <a href="<?= base_url('login') ?>" class="text-vermillion hover:underline">Sign In</a>
+                <a href="<?= base_url('login') ?>" class="text-vermillion hover:underline transition">Sign In</a>
             </p>
         </div>
     </main>
 
-    <!-- ✅ Reusable Footer -->
+    <!-- ✅ Footer -->
     <?= view('components/footer', [
         'brandTitle' => 'Streetline Supply Co.',
         'tagline' => 'Skate gear for real riders.',
