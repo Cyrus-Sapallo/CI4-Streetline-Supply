@@ -12,6 +12,7 @@
 </head>
 
 <body class="bg-black font-sans text-white">
+
     <!-- ✅ Header -->
     <?= view('components/header', [
         'brandTitle' => 'Streetline Supply',
@@ -79,8 +80,6 @@
                     <div class="p-4">
                         <h3 class="font-bold text-vermillion text-xl"><?= $feature['title'] ?></h3>
                         <p class="mt-2 text-gray-300"><?= $feature['desc'] ?></p>
-
-
                     </div>
                 </div>
             <?php endforeach; ?>
@@ -121,7 +120,6 @@
                         <div class="font-bold text-vermillion text-xl uppercase"><?= $step ?></div>
                     </div>
                 <?php endforeach; ?>
-
             </div>
         </section>
 
@@ -142,16 +140,13 @@
         </section>
     </main>
 
-    <!-- Footer -->
-    <footer class="px-8 py-6 border-gray-700 border-t text-center">
-        <p class="mb-4 text-gray-400">
-            STREETLINE SUPPLY CO. © 2024. ALL RIGHTS RESERVED.
-        </p>
-        <div class="flex flex-wrap justify-center gap-6">
-            <a href="/services" class="hover:text-vermillion">GEAR SERVICES</a>
-            <a href="/" class="hover:text-vermillion">Home</a>
-            <a href="/moodboard" class="hover:text-vermillion">THE MOOD BOARD</a>
-            <a href="/roadmap" class="hover:text-vermillion">ROAD MAP</a>
-        </div>
-    </footer>
+    <!-- ✅ Footer -->
+    <?= view('components/footer', [
+        'brandTitle' => 'Streetline Supply Co.',
+        'tagline' => 'Skate gear for real riders.',
+        'logo' => base_url('images/logo.png'),
+    ]) ?>
+
 </body>
+
+</html>

@@ -34,7 +34,6 @@
 
 <body class="bg-black font-sans text-white">
 
-
     <!-- ✅ Header -->
     <?= view('components/header', [
         'brandTitle' => 'Streetline Supply',
@@ -76,7 +75,13 @@
         </div>
     </main>
 
-
-
+    <!-- ✅ Footer -->
+    <?= view('components/footer', [
+        'brandTitle' => 'Streetline Supply Co.',
+        'tagline' => 'Skate gear for real riders.',
+        'logo' => base_url('images/logo.png'),
+    ]) ?>
 
 </body>
+
+</html>
