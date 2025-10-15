@@ -77,14 +77,12 @@
         <section>
             <h2 class="mb-6 font-extrabold text-vermillion text-3xl uppercase tracking-wider">🔘 Buttons</h2>
             <div class="flex flex-wrap gap-4">
-
-
-
-
-
+                <?= view('components/buttons/button_primary', ['label' => 'Shop Now', 'href' => '/shop']) ?>
+                <?= view('components/buttons/button_secondary', ['label' => 'Learn More', 'href' => '/about']) ?>
+                <?= view('components/buttons/button_border', ['label' => 'Explore', 'href' => '/explore']) ?>
+                <?= view('components/buttons/button_link', ['label' => 'Read Docs', 'href' => '/docs']) ?>
             </div>
         </section>
-
         <!-- 📦 CARDS -->
         <section>
             <h2 class="mb-6 font-extrabold text-vermillion text-3xl uppercase tracking-wider">📦 Cards</h2>
@@ -133,26 +131,6 @@
                     'excerpt' => 'Our crew always has your back.'
                 ]) ?>
             </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
             <!-- Team Cards -->
             <div class="gap-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 mt-12">
