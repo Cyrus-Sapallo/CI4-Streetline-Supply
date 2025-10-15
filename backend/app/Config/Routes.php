@@ -7,6 +7,6 @@ use CodeIgniter\Router\RouteCollection;
  */
 $routes->get('/', 'Users::index');
 $routes->get('login', 'Users::login');
-$routes->get('users/signup', 'Users::signup');
+$routes->get('signup', 'Users::signup');
 $routes->get('moodboard', 'Users::moodboard');
 $routes->get('roadmap', 'Users::roadmap');
