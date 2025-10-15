@@ -1,28 +1,35 @@
-head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Streetline Supply | Sign Up</title>
-<script src="https://cdn.tailwindcss.com"></script>
-<link rel="icon" type="image/png" href="<?= base_url('images/logo.png') ?>">
-<style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+<!DOCTYPE html>
+<html lang="en">
 
-    body {
-        font-family: 'Poppins', sans-serif;
-        background-color: #000;
-        @@ -14, 127+18, 64 @@ padding: 0;
-    }
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Streetline Supply | Sign Up</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" type="image/png" href="<?= base_url('images/logo.png') ?>">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 
-    .text-vermillion {
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #000;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+        }
 
-        background-color: #E34234;
+        .text-vermillion {
+            color: #E34234;
+        }
 
-    }
+        .bg-vermillion {
+            background-color: #E34234;
+        }
 
-    .bg-vermillion:hover {
-        background-color: #c33225;
-    }
-</style>
+        .bg-vermillion:hover {
+            background-color: #c33225;
+        }
+    </style>
 </head>
 
 <body class="flex flex-col bg-black min-h-screen">
@@ -70,5 +77,11 @@ head>
         </div>
     </main>
 
-    <footer>
-        STREETLINE SUPPLY CO. © 2024. ALL RIGHTS RESERVED.<br>
+    <!-- ✅ Reusable Footer -->
+    <?= view('components/footer', [
+        'brandTitle' => 'Streetline Supply Co.',
+        'tagline' => 'Skate gear for real riders.',
+        'logo' => base_url('images/logo.png'),
+    ]) ?>
+
+</body>
