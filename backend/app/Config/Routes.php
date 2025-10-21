@@ -11,7 +11,7 @@ $routes->get('signup', 'Users::signup');
 $routes->get('moodboard', 'Users::moodboard');
 $routes->get('roadmap', 'Users::roadmap');
 //admin Routes
-$routes->get('dashboard', 'Admin::dashboard');
-$routes->get('services', 'Admin::services');
-$routes->get('accounts', 'Admin::accounts');
-$routes->get('requests', 'Admin::requests');
+$routes->get('/admin', 'Admin::dashboard');
+$routes->get('/admin/services', 'Admin::services');
+$routes->get('/admin/accounts', 'Admin::accounts');
+$routes->get('/admin/requests', 'Admin::requests');
