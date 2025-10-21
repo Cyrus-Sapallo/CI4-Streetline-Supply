@@ -16,7 +16,7 @@ class Admin extends BaseController
 
     public function accounts()
     {
-        return view('admin/accounts');
+        return view('admin/account');
     }
 
     public function requests()
