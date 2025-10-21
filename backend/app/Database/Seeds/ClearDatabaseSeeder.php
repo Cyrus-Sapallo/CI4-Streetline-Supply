@@ -11,9 +11,10 @@ class ClearDatabaseSeeder extends Seeder
         $db = \Config\Database::connect();
 
         // Order matters: child tables first, then parents
-        // List down your tables here
-        $tablesInOrder = [];
+        // Add your table(s) here
+        $tablesInOrder = ['users'];
 
+        // Disable foreign key checks to avoid constraint errors
         $db->disableForeignKeyChecks();
 
         try {
