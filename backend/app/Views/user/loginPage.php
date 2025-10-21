@@ -51,15 +51,33 @@
     ]) ?>
 
     <!-- ✅ Login Section -->
+    <!-- ✅ Login Section -->
     <main class="flex flex-grow justify-center items-center bg-gradient-to-b from-black via-[#0a0a0a] to-[#1a1a1a] px-6 py-20">
         <div class="bg-gray-900 shadow-2xl p-10 rounded-2xl w-full max-w-md text-white hover:scale-[1.01] transition duration-300 transform">
             <h2 class="mb-2 font-bebas text-vermillion text-3xl text-center tracking-wide">Login</h2>
             <p class="mb-6 text-gray-400 text-center">
                 Sign in to your <strong>Streetline Supply</strong> account.
             </p>
+
+            <!-- Display Validation / Login Errors -->
+            <?php if (session()->getFlashdata('errors')): ?>
+                <div class="bg-red-800 mb-4 px-4 py-3 rounded-md text-red-200">
+                    <ul class="pl-5 list-disc">
+                        <?php foreach (session()->getFlashdata('errors') as $error): ?>
+                            <li><?= esc($error) ?></li>
+                        <?php endforeach; ?>
+                    </ul>
+                </div>
+            <?php endif; ?>
+
+            <!-- Login Form -->
             <form action="<?= base_url('login') ?>" method="post" class="space-y-4">
+                <?= csrf_field() ?> <!-- CSRF Token for security -->
+
                 <input type="email" name="email" placeholder="Email" required
+                    value="<?= esc(session()->getFlashdata('old')['email'] ?? '') ?>"
                     class="bg-gray-800 px-4 py-3 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-vermillion w-full text-white transition placeholder-gray-500">
+
                 <input type="password" name="password" placeholder="Password" required
                     class="bg-gray-800 px-4 py-3 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-vermillion w-full text-white transition placeholder-gray-500">
 
@@ -75,6 +93,7 @@
             </p>
         </div>
     </main>
+
 
     <!-- ✅ CTA Section -->
     <?= view('components/cta', [
