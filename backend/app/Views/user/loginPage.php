@@ -7,7 +7,7 @@
     <title>Login | Streetline Supply</title>
     <!-- TailwindCSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="icon" type="image/png" href="<?= base_url('images/logo.png') ?>">
+    <link rel="icon" type="image/png" href="<?= base_url('images/logo.png') ?>" />
     <!-- 🎨 Fonts & Theme -->
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;600;800&display=swap');
@@ -51,7 +51,6 @@
     ]) ?>
 
     <!-- ✅ Login Section -->
-    <!-- ✅ Login Section -->
     <main class="flex flex-grow justify-center items-center bg-gradient-to-b from-black via-[#0a0a0a] to-[#1a1a1a] px-6 py-20">
         <div class="bg-gray-900 shadow-2xl p-10 rounded-2xl w-full max-w-md text-white hover:scale-[1.01] transition duration-300 transform">
             <h2 class="mb-2 font-bebas text-vermillion text-3xl text-center tracking-wide">Login</h2>
@@ -74,26 +73,29 @@
             <form action="<?= base_url('login') ?>" method="post" class="space-y-4">
                 <?= csrf_field() ?> <!-- CSRF Token for security -->
 
+                <!-- Email Field -->
                 <input type="email" name="email" placeholder="Email" required
                     value="<?= esc(session()->getFlashdata('old')['email'] ?? '') ?>"
                     class="bg-gray-800 px-4 py-3 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-vermillion w-full text-white transition placeholder-gray-500">
 
+                <!-- Password Field -->
                 <input type="password" name="password" placeholder="Password" required
                     class="bg-gray-800 px-4 py-3 border border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-vermillion w-full text-white transition placeholder-gray-500">
 
+                <!-- Submit Button -->
                 <button type="submit"
                     class="bg-vermillion hover:bg-[#b83236] py-3 rounded-md w-full font-bold text-white tracking-wide transition duration-300">
                     Login
                 </button>
             </form>
 
+            <!-- Signup Link -->
             <p class="mt-6 text-gray-400 text-sm text-center">
-                Don't have an account?
+                Don't have an account? 
                 <a href="<?= base_url('signup') ?>" class="text-vermillion hover:underline transition">Sign Up</a>
             </p>
         </div>
     </main>
-
 
     <!-- ✅ CTA Section -->
     <?= view('components/cta', [

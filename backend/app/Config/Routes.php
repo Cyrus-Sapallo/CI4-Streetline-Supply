@@ -5,20 +5,22 @@ use CodeIgniter\Router\RouteCollection;
 /**
  * @var RouteCollection $routes
  */
+
 // Main pages
 $routes->get('/', 'Users::index');
 $routes->get('moodboard', 'Users::moodboard');
 $routes->get('roadmap', 'Users::roadmap');
 
-// Login System
-$routes->get('login', 'Users::login');
-$routes->post('login', 'Auth::login');
-$routes->get('logout', 'Login::logout');
-$routes->post('logout', 'Auth::logout');
-//signup system
-$routes->post('signup', 'Auth::signup');
-$routes->get('signup', 'Users::signup');
+// Signup system
+// The login page and signup page should be rendered by the Auth controller
+$routes->get('login', 'Auth::login');   // GET login page
+$routes->get('signup', 'Auth::signup'); // GET signup page
+$routes->get('logout', 'Auth::logout'); // GET logout (this redirects the user)
 
+// Handling form submissions
+$routes->post('login', 'Auth::login');  // POST login (handles form submission)
+$routes->post('signup', 'Auth::signup'); // POST signup (handles form submission)
+$routes->post('logout', 'Auth::logout'); // POST logout (handles form submission)
 
 // Admin Routes
 $routes->get('/admin', 'Admin::dashboard');
