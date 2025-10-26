@@ -5,7 +5,7 @@ namespace App\Models;
 use CodeIgniter\Model;
 use App\Entities\User;
 
-class UserModel extends Model
+class UsersModel extends Model
 {
     protected $table            = 'users';
     protected $primaryKey       = 'id';
@@ -38,18 +38,4 @@ class UserModel extends Model
         'last_name'     => 'required|min_length[2]',
         'password_hash' => 'permit_empty|min_length[8]',
     ];
-
-    // ✅ Automatically hash password before saving
-    protected $beforeInsert = ['hashPassword'];
-    protected $beforeUpdate = ['hashPassword'];
-
-    protected function hashPassword(array $data)
-    {
-        if (!isset($data['data']['password_hash']) || empty($data['data']['password_hash'])) {
-            return $data;
-        }
-
-        $data['data']['password_hash'] = password_hash($data['data']['password_hash'], PASSWORD_DEFAULT);
-        return $data;
-    }
 }

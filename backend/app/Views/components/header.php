@@ -53,7 +53,13 @@
             <?php if ($session->has('user')): ?>
                 <details class="group relative">
                     <summary class="flex items-center space-x-2 focus:outline-none cursor-pointer list-none">
-                        <div class="flex justify-center items-center bg-gray-800 rounded-full w-9 h-9 text-lg">👤</div>
+                        <div class="relative w-10 h-10">
+                            <div class="shadow-[0_0_10px_#D64045] border-2 border-vermillion rounded-full overflow-hidden">
+                                <img src="<?= base_url('images/user_default.jpg') ?>"
+                                    alt="Profile"
+                                    class="w-10 h-10 object-cover">
+                            </div>
+                        </div>
                     </summary>
                     <div class="right-0 z-50 absolute bg-black shadow-lg mt-2 py-2 border border-gray-700 rounded-lg w-48">
                         <a href="<?= base_url('profile') ?>" class="block hover:bg-gray-800 px-4 py-2 text-sm">Profile</a>
