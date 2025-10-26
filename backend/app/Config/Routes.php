@@ -28,3 +28,10 @@ $routes->get('admin/services', 'Admin::services');
 $routes->get('admin/accounts', 'Admin::accounts');
 $routes->get('admin/requests', 'Admin::requests');
 $routes->get('admin/account', 'Admin::account');
+
+// Shop 
+$routes->group('', ['namespace' => 'App\Controllers'], static function ($routes) {
+    $routes->get('shop', 'Shop::index');
+    $routes->get('shop/(:num)', 'Shop::show/$1');
+    $routes->get('cart', 'Shop::cart');
+});
