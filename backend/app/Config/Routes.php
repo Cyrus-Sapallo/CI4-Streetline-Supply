@@ -31,7 +31,7 @@ $routes->get('admin/account', 'Admin::account');
 
 // Shop 
 $routes->group('', ['namespace' => 'App\Controllers'], static function ($routes) {
-    $routes->get('shop', 'Shop::index');
-    $routes->get('shop/(:num)', 'Shop::show/$1');
-    $routes->get('cart', 'Shop::cart');
+    // 🏬 Public Shop
+    $routes->get('shop', 'Shop::index');           // List all products
+    $routes->get('shop/(:num)', 'Shop::show/$1');  // Single product details
 });

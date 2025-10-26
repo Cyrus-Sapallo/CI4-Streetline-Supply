@@ -42,7 +42,7 @@
 </head>
 
 <body class="bg-black font-sans text-white">
-    <!-- ✅ Header -->
+    <!-- Header -->
     <?= view('components/header', [
         'brandTitle' => 'Streetline Supply',
         'brandTagline' => 'Skate gear for real riders.',
@@ -54,24 +54,30 @@
         'cta' => ['label' => 'Cart', 'href' => base_url('cart')],
     ]) ?>
 
-    <!-- ✅ Main Content -->
+    <!-- Main Content -->
     <main class="mx-auto px-6 py-12 max-w-6xl">
         <header class="mb-10">
             <h1 class="font-bebas text-vermillion text-5xl tracking-wide">STREETLINE SHOP</h1>
             <p class="mt-2 text-gray-400">Browse our latest skatewear, decks, and accessories.</p>
         </header>
 
-        <!-- 🛍 Product Grid -->
+        <!-- Product Grid -->
         <section class="gap-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
             <?php foreach ($products as $product): ?>
                 <div class="bg-gray-900 shadow hover:shadow-2xl border border-gray-700 rounded-xl overflow-hidden transition-all duration-300">
                     <div class="relative">
-                        <img src="<?= esc($product['image']) ?>" alt="<?= esc($product['title']) ?>" class="w-full h-60 object-cover">
-                        <div class="top-2 right-2 absolute bg-vermillion px-2 py-1 rounded-full font-semibold text-xs">NEW</div>
+                        <img src="<?= base_url('images/' . esc($product['image'])) ?>"
+                            alt="<?= esc($product['name']) ?>"
+                            class="w-full h-60 object-cover">
+
+                        <?php if (!empty($product['created_at']) && strtotime($product['created_at']) > strtotime('-30 days')): ?>
+                            <div class="top-2 right-2 absolute bg-vermillion px-2 py-1 rounded-full font-semibold text-xs">NEW</div>
+                        <?php endif; ?>
                     </div>
                     <div class="p-5">
-                        <h3 class="font-bebas text-2xl"><?= esc($product['title']) ?></h3>
+                        <h3 class="font-bebas text-2xl"><?= esc($product['name']) ?></h3>
                         <p class="mt-1 text-gray-400 text-sm line-clamp-2"><?= esc($product['description']) ?></p>
+                        <p class="mt-1 text-gray-500 text-sm">Category: <?= esc($product['category']) ?> | Stock: <?= esc($product['stock']) ?></p>
                         <div class="flex justify-between items-center mt-4">
                             <span class="font-bold text-green-400 text-lg">$<?= number_format($product['price'], 2) ?></span>
                             <a href="<?= base_url('shop/' . $product['id']) ?>"
@@ -84,7 +90,7 @@
             <?php endforeach; ?>
         </section>
 
-        <!-- 🧾 CTA -->
+        <!-- CTA Section -->
         <section class="bg-gray-900 mt-16 p-8 border border-vermillion rounded-lg text-center">
             <h2 class="mb-2 font-bebas text-vermillion text-4xl">Ready to Roll?</h2>
             <p class="mb-6 text-gray-300">Get your crew geared up with the latest from Streetline.</p>
@@ -94,7 +100,7 @@
         </section>
     </main>
 
-    <!-- ✅ Footer -->
+    <!-- Footer -->
     <?= view('components/footer', [
         'brandTitle' => 'Streetline Supply Co.',
         'tagline' => 'Skate gear for real riders.',
