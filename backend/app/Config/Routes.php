@@ -31,3 +31,4 @@ $routes->get('admin/account', 'Admin::account');
 
 //Shop Pages
 $routes->get('shop', 'Shop::index');
+$routes->get('product/(:num)', 'ProductController::view/$1');

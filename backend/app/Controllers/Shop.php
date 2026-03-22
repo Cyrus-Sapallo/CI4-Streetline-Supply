@@ -2,10 +2,16 @@
 
 namespace App\Controllers;
 
+use App\Models\ProductModel;
+
 class Shop extends BaseController
 {
     public function index()
     {
-        return view('user/shop/shop'); // 👈 matches your file
+        $model = new ProductModel();
+
+        $data['products'] = $model->findAll(); // fetch from DB
+
+        return view('user/shop/shop', $data);
     }
 }

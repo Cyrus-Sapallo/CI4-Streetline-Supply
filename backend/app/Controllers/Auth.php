@@ -63,7 +63,7 @@ class Auth extends BaseController
 
         // Redirect based on user type
         $type = strtolower($userArr['type'] ?? 'client');
-        if ($type === 'manager') {
+        if ($type === 'admin') {
             return redirect()->to('/admin/dashboard');
         }
 
