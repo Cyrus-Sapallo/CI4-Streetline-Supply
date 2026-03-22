@@ -7,7 +7,7 @@ use App\Models\RequestModel;
 
 class Admin extends BaseController
 {
-    // DASHBOARD (DYNAMIC)
+    // DASHBOARD
     public function dashboard()
     {
         $productModel = new ProductModel();
@@ -17,7 +17,7 @@ class Admin extends BaseController
         $data = [
             'products' => $productModel->findAll(),
 
-            // ✅ DASHBOARD STATS
+            // DASHBOARD STATS
             'stats' => [
                 [
                     'title' => 'Total Products',
@@ -36,7 +36,7 @@ class Admin extends BaseController
                 ],
             ],
 
-            // (OPTIONAL) recent requests
+            // RECENT REQUESTS
             'requests' => $requestModel
                 ->orderBy('id', 'DESC')
                 ->findAll(5),
@@ -57,14 +57,16 @@ class Admin extends BaseController
 
     public function requests()
     {
-        $requestModel = new RequestModel();
+        $model = new RequestModel();
 
-        $data['requests'] = $requestModel->findAll();
+        $data['requests'] = $model->findAll();
 
         return view('admin/requests', $data);
     }
 
-    // SAVE PRODUCT
+    // =========================
+    // CREATE (already have saveProduct)
+    // =========================
     public function saveProduct()
     {
         $validation = \Config\Services::validation();
@@ -101,7 +103,61 @@ class Admin extends BaseController
             'image' => 'uploads/' . $newName,
         ]);
 
-        return redirect()->to('/admin/dashboard')
-            ->with('success', 'Product added successfully');
+        return redirect()->to('/admin/dashboard')->with('success', 'Product added successfully');
+    }
+
+    // =========================
+    // EDIT
+    // =========================
+    public function editProduct($id)
+    {
+        $model = new ProductModel();
+
+        $data['product'] = $model->find($id);
+
+        return view('admin/edit_product', $data);
+    }
+
+    // =========================
+    // UPDATE
+    // =========================
+    public function updateProduct($id)
+    {
+        $model = new ProductModel();
+
+        $data = [
+            'name' => $this->request->getPost('name'),
+            'price' => $this->request->getPost('price'),
+            'category' => $this->request->getPost('category'),
+        ];
+
+        $file = $this->request->getFile('image');
+
+        if ($file && $file->isValid() && !$file->hasMoved()) {
+            if (!is_dir('uploads')) {
+                mkdir('uploads', 0777, true);
+            }
+
+            $newName = $file->getRandomName();
+            $file->move('uploads', $newName);
+
+            $data['image'] = 'uploads/' . $newName;
+        }
+
+        $model->update($id, $data);
+
+        return redirect()->to('/admin/dashboard')->with('success', 'Product updated successfully');
+    }
+
+    // =========================
+    // DELETE
+    // =========================
+    public function deleteProduct($id)
+    {
+        $model = new ProductModel();
+
+        $model->delete($id);
+
+        return redirect()->to('/admin/dashboard')->with('success', 'Product deleted successfully');
     }
 }

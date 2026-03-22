@@ -10,7 +10,7 @@
 
 <body class="bg-gray-900 font-sans text-white">
 
-    <!-- Header -->
+    <!-- HEADER -->
     <?= view('components/header', [
         'brandTitle' => 'Admin Panel',
         'brandTagline' => 'Manage your system efficiently',
@@ -25,7 +25,7 @@
 
     <main class="mx-auto px-6 py-12 max-w-6xl">
 
-        <!-- Stats -->
+        <!-- STATS -->
         <section class="gap-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 mb-12">
             <?php foreach ($stats as $stat): ?>
                 <div class="bg-gray-800 shadow-lg p-6 rounded-lg text-center">
@@ -36,7 +36,7 @@
             <?php endforeach; ?>
         </section>
 
-        <!-- Products -->
+        <!-- PRODUCTS -->
         <section class="bg-gray-800 shadow-lg p-6 rounded-lg">
             <h2 class="mb-4 font-bold text-2xl">Products</h2>
 
@@ -47,6 +47,7 @@
                         <th class="p-2">Name</th>
                         <th class="p-2">Price</th>
                         <th class="p-2">Category</th>
+                        <th class="p-2">Actions</th>
                     </tr>
                 </thead>
 
@@ -57,14 +58,35 @@
                                 <td class="p-2">
                                     <img src="<?= base_url($product['image']) ?>" class="rounded w-16 h-16 object-cover">
                                 </td>
+
                                 <td class="p-2"><?= esc($product['name']) ?></td>
                                 <td class="p-2">$<?= esc($product['price']) ?></td>
                                 <td class="p-2"><?= esc($product['category']) ?></td>
+
+                                <!-- CRUD BUTTONS -->
+                                <td class="flex gap-2 p-2">
+
+                                    <!-- EDIT -->
+                                    <?= view('components/buttons/button_secondary', [
+                                        'label' => 'Edit',
+                                        'href' => base_url('admin/editProduct/' . $product['id'])
+                                    ]) ?>
+
+                                    <!-- DELETE (SAFE FORM) -->
+                                    <form action="<?= base_url('admin/deleteProduct/' . $product['id']) ?>" method="post">
+                                        <?= csrf_field() ?>
+                                        <button type="submit"
+                                            class="bg-red-500 hover:bg-red-600 px-3 py-1 rounded text-white text-sm">
+                                            Delete
+                                        </button>
+                                    </form>
+
+                                </td>
                             </tr>
                         <?php endforeach; ?>
                     <?php else: ?>
                         <tr>
-                            <td colspan="4" class="p-4 text-gray-400 text-center">
+                            <td colspan="5" class="p-4 text-gray-400 text-center">
                                 No products found
                             </td>
                         </tr>
@@ -73,7 +95,7 @@
             </table>
         </section>
 
-        <!-- Requests -->
+        <!-- REQUESTS -->
         <section class="bg-gray-800 shadow-lg mt-10 p-6 rounded-lg">
             <h2 class="mb-4 font-bold text-2xl">Recent Requests</h2>
 
@@ -84,7 +106,7 @@
                         <th class="p-2">User ID</th>
                         <th class="p-2">Service</th>
                         <th class="p-2">Status</th>
-                        <th class="p-2">Created</th>
+                        <th class="p-2">Date</th>
                     </tr>
                 </thead>
 
@@ -112,6 +134,7 @@
 
     </main>
 
+    <!-- FOOTER -->
     <?= view('components/footer', [
         'brandTitle' => 'Streetline Admin',
         'tagline' => 'Manage your system efficiently',
