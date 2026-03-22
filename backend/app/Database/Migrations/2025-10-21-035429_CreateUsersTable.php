@@ -18,7 +18,6 @@ class CreateUsersTable extends Migration
             'first_name' => [
                 'type'       => 'VARCHAR',
                 'constraint' => 100,
-                'null'       => false,
             ],
             'middle_name' => [
                 'type'       => 'VARCHAR',
@@ -28,36 +27,29 @@ class CreateUsersTable extends Migration
             'last_name' => [
                 'type'       => 'VARCHAR',
                 'constraint' => 100,
-                'null'       => false,
             ],
             'email' => [
                 'type'       => 'VARCHAR',
                 'constraint' => 255,
-                'null'       => false,
-                'unique'     => true,
             ],
             'password_hash' => [
                 'type'       => 'VARCHAR',
                 'constraint' => 255,
-                'null'       => false,
             ],
             'type' => [
                 'type'       => 'VARCHAR',
                 'constraint' => 50,
                 'default'    => 'client',
-                'null'       => false,
             ],
             'account_status' => [
                 'type'       => 'TINYINT',
                 'constraint' => 1,
-                'default'    => 1, // 1 = active, 0 = inactive
-                'null'       => false,
+                'default'    => 1,
             ],
             'email_activated' => [
                 'type'       => 'TINYINT',
                 'constraint' => 1,
                 'default'    => 0,
-                'null'       => false,
             ],
             'profile_image' => [
                 'type'       => 'VARCHAR',
@@ -69,23 +61,25 @@ class CreateUsersTable extends Migration
                 'null' => true,
             ],
             'created_at' => [
-                'type' => 'DATETIME',
+                'type' => 'TIMESTAMP',
                 'null' => true,
+                'default' => null,
             ],
             'updated_at' => [
-                'type' => 'DATETIME',
+                'type' => 'TIMESTAMP',
                 'null' => true,
+                'default' => null,
             ],
         ]);
 
-        // Primary key and table creation
         $this->forge->addKey('id', true);
+        $this->forge->addKey('email', false, true); // UNIQUE KEY
+
         $this->forge->createTable('users');
     }
 
     public function down()
     {
-        // Drops the users table when rolling back
         $this->forge->dropTable('users');
     }
 }

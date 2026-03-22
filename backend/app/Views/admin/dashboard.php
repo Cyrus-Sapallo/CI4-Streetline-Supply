@@ -10,7 +10,7 @@
 
 <body class="bg-gray-900 font-sans text-white">
 
-    <!-- Header -->
+    <!-- HEADER -->
     <?= view('components/header', [
         'brandTitle' => 'Admin Panel',
         'brandTagline' => 'Manage your system efficiently',
@@ -25,17 +25,9 @@
 
     <main class="mx-auto px-6 py-12 max-w-6xl">
 
-        <!-- Stats Widgets -->
+        <!-- STATS -->
         <section class="gap-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 mb-12">
-            <?php
-            $stats = [
-                ['title' => 'Total Users', 'value' => 124, 'icon' => '👤'],
-                ['title' => 'Total Requests', 'value' => 87, 'icon' => '📦'],
-                ['title' => 'Total Services', 'value' => 15, 'icon' => '🛠️'],
-                ['title' => 'Revenue', 'value' => '$3,240', 'icon' => '💰'],
-            ];
-            foreach ($stats as $stat):
-            ?>
+            <?php foreach ($stats as $stat): ?>
                 <div class="bg-gray-800 shadow-lg p-6 rounded-lg text-center">
                     <div class="mb-2 text-3xl"><?= $stat['icon'] ?></div>
                     <div class="text-gray-400 uppercase"><?= $stat['title'] ?></div>
@@ -44,34 +36,105 @@
             <?php endforeach; ?>
         </section>
 
-        <!-- Recent Activity / Requests Table -->
+        <!-- PRODUCTS -->
         <section class="bg-gray-800 shadow-lg p-6 rounded-lg">
-            <h2 class="mb-4 font-bold text-2xl">Recent Requests</h2>
-            <table class="w-full text-left border-collapse table-auto">
+            <h2 class="mb-4 font-bold text-2xl">Products</h2>
+
+            <table class="w-full text-left border-collapse">
                 <thead>
                     <tr class="border-gray-700 border-b">
-                        <th class="px-4 py-2">ID</th>
-                        <th class="px-4 py-2">User</th>
-                        <th class="px-4 py-2">Service</th>
-                        <th class="px-4 py-2">Status</th>
-                        <th class="px-4 py-2">Date</th>
+                        <th class="p-2">Image</th>
+                        <th class="p-2">Name</th>
+                        <th class="p-2">Price</th>
+                        <th class="p-2">Category</th>
+                        <th class="p-2">Actions</th>
                     </tr>
                 </thead>
+
                 <tbody>
+                    <?php if (!empty($products)): ?>
+                        <?php foreach ($products as $product): ?>
+                            <tr class="border-gray-700 border-b">
+                                <td class="p-2">
+                                    <img src="<?= base_url($product['image']) ?>" class="rounded w-16 h-16 object-cover">
+                                </td>
+
+                                <td class="p-2"><?= esc($product['name']) ?></td>
+                                <td class="p-2">$<?= esc($product['price']) ?></td>
+                                <td class="p-2"><?= esc($product['category']) ?></td>
+
+                                <!-- CRUD BUTTONS -->
+                                <td class="flex gap-2 p-2">
+
+                                    <!-- EDIT -->
+                                    <?= view('components/buttons/button_secondary', [
+                                        'label' => 'Edit',
+                                        'href' => base_url('admin/editProduct/' . $product['id'])
+                                    ]) ?>
+
+                                    <!-- DELETE (SAFE FORM) -->
+                                    <form action="<?= base_url('admin/deleteProduct/' . $product['id']) ?>" method="post">
+                                        <?= csrf_field() ?>
+                                        <button type="submit"
+                                            class="bg-red-500 hover:bg-red-600 px-3 py-1 rounded text-white text-sm">
+                                            Delete
+                                        </button>
+                                    </form>
+
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    <?php else: ?>
+                        <tr>
+                            <td colspan="5" class="p-4 text-gray-400 text-center">
+                                No products found
+                            </td>
+                        </tr>
+                    <?php endif; ?>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- REQUESTS -->
+        <section class="bg-gray-800 shadow-lg mt-10 p-6 rounded-lg">
+            <h2 class="mb-4 font-bold text-2xl">Recent Requests</h2>
+
+            <table class="w-full text-left border-collapse">
+                <thead>
                     <tr class="border-gray-700 border-b">
-                        <td class="px-4 py-2">001</td>
-                        <td class="px-4 py-2">Cyrus S.</td>
-                        <td class="px-4 py-2">Skateboard Repair</td>
-                        <td class="px-4 py-2 text-green-400">Completed</td>
-                        <td class="px-4 py-2">2025-10-21</td>
+                        <th class="p-2">ID</th>
+                        <th class="p-2">User ID</th>
+                        <th class="p-2">Service</th>
+                        <th class="p-2">Status</th>
+                        <th class="p-2">Date</th>
                     </tr>
-                    <!-- Repeat rows dynamically -->
+                </thead>
+
+                <tbody>
+                    <?php if (!empty($requests)): ?>
+                        <?php foreach ($requests as $req): ?>
+                            <tr class="border-gray-700 border-b">
+                                <td class="p-2"><?= esc($req['id'] ?? '') ?></td>
+                                <td class="p-2"><?= esc($req['user_id'] ?? '') ?></td>
+                                <td class="p-2"><?= esc($req['service'] ?? '') ?></td>
+                                <td class="p-2 text-green-400"><?= esc($req['status'] ?? '') ?></td>
+                                <td class="p-2"><?= esc($req['created_at'] ?? '') ?></td>
+                            </tr>
+                        <?php endforeach; ?>
+                    <?php else: ?>
+                        <tr>
+                            <td colspan="5" class="p-4 text-gray-400 text-center">
+                                No requests found
+                            </td>
+                        </tr>
+                    <?php endif; ?>
                 </tbody>
             </table>
         </section>
 
     </main>
 
+    <!-- FOOTER -->
     <?= view('components/footer', [
         'brandTitle' => 'Streetline Admin',
         'tagline' => 'Manage your system efficiently',
