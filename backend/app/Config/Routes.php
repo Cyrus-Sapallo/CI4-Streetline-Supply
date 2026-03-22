@@ -28,3 +28,6 @@ $routes->get('admin/services', 'Admin::services');
 $routes->get('admin/accounts', 'Admin::accounts');
 $routes->get('admin/requests', 'Admin::requests');
 $routes->get('admin/account', 'Admin::account');
+
+//Shop Pages
+$routes->get('shop', 'Shop::index');

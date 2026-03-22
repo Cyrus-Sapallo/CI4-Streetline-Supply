@@ -66,19 +66,19 @@
                     'image' => base_url('images/snd.jpg'),
                     'title' => 'Skate and Destroy',
                     'excerpt' => 'Offers durable skateboard parts and accessories built for every ride.',
-                    'href' => base_url('shop/skate-destroy')
+                    'href' => base_url('shop')
                 ],
                 [
                     'image' => base_url('images/hs.jpg'),
                     'title' => 'Hoodside',
                     'excerpt' => 'Delivers streetwear made for skaters, blending comfort, style, and attitude.',
-                    'href' => base_url('shop/hoodside')
+                    'href' => base_url('shop')
                 ],
                 [
                     'image' => base_url('images/access.jpg'),
                     'title' => 'Grind Supply',
                     'excerpt' => 'Packs the essential gear and tools every skater needs to keep rolling.',
-                    'href' => base_url('shop/grind-supply')
+                    'href' => base_url('shop')
                 ],
             ];
             foreach ($features as $feature):
