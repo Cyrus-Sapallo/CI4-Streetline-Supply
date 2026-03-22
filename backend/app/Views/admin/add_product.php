@@ -1,12 +1,14 @@
 <form action="<?= base_url('admin/save') ?>" method="post" enctype="multipart/form-data">
 
+    <?= csrf_field() ?>
+
     <input type="text" name="name" placeholder="Product Name" required>
     <input type="number" name="price" placeholder="Price" required>
 
-    <select name="category">
-        <option>Decks</option>
-        <option>Clothing</option>
-        <option>Accessories</option>
+    <select name="category" required>
+        <option value="Decks">Decks</option>
+        <option value="Clothing">Clothing</option>
+        <option value="Accessories">Accessories</option>
     </select>
 
     <input type="file" name="image" required>

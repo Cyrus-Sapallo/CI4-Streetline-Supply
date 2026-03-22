@@ -41,7 +41,7 @@ class ProductSeeder extends Seeder
             // 🧢 Accessories
             [
                 'name' => 'Skate Cap Black',
-                'price' => 18,s
+                'price' => 18,
                 'image' => 'images/shop/Skate Cap Black.jpg',
                 'category' => 'Accessories',
             ],

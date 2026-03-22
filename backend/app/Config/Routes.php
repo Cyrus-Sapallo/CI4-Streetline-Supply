@@ -28,6 +28,7 @@ $routes->get('admin/services', 'Admin::services');
 $routes->get('admin/accounts', 'Admin::accounts');
 $routes->get('admin/requests', 'Admin::requests');
 $routes->get('admin/account', 'Admin::account');
+$routes->post('admin/save', 'Admin::saveProduct');
 
 //Shop Pages
 $routes->get('shop', 'Shop::index');
