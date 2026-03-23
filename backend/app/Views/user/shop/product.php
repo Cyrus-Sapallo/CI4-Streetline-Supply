@@ -99,6 +99,16 @@
 
                 <div class="flex flex-wrap gap-4 mt-8">
 
+<<<<<<< HEAD
+                    <!-- Add to Cart -->
+                    <form action="<?= base_url('cart/add') ?>" method="POST">
+                        <input type="hidden" name="product_id" value="<?= $product['id'] ?>">
+                        <input type="hidden" name="quantity" value="1">
+                        <button type="submit" class="bg-vermillion hover:opacity-90 px-6 py-3 rounded-lg font-semibold">
+                            Add to Cart
+                        </button>
+                    </form>
+=======
                     <?php if (isset($product['stock']) && $product['stock'] > 0): ?>
                         <button class="bg-vermillion hover:opacity-90 px-6 py-3 rounded-lg font-semibold">
                             Add to Cart
@@ -113,6 +123,7 @@
                         class="px-6 py-3 border border-vermillion rounded-lg text-vermillion hover:bg-vermillion hover:text-white font-semibold">
                         ❤️ Add to Wishlist
                     </a>
+>>>>>>> 872a3ecb4bfd9406979fbf790c0a43a2930ad869
 
                     <a href="<?= base_url('shop') ?>"
                         class="hover:bg-vermillion px-6 py-3 border border-vermillion rounded-lg text-vermillion hover:text-white font-semibold">
