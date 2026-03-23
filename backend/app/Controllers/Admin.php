@@ -143,4 +143,9 @@ class Admin extends BaseController
 
         return redirect()->to('/admin/dashboard')->with('success', 'Product deleted successfully');
     }
+    public function createProduct()
+    {
+        // Display the "Add Product" form
+        return view('admin/products_create');
+    }
 }
