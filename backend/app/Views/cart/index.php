@@ -109,9 +109,9 @@
                             <span class="font-bold text-2xl text-green-500">$<?= number_format($total, 2) ?></span>
                         </div>
 
-                        <button class="w-full bg-vermillion hover:bg-vermillion-dark text-white font-bold py-3 px-4 rounded transition">
+                        <a href="<?= base_url('checkout') ?>" class="block w-full bg-vermillion hover:bg-vermillion-dark text-white text-center font-bold py-3 px-4 rounded transition">
                             Proceed to Checkout
-                        </button>
+                        </a>
                     </div>
                 </div>
             </div>

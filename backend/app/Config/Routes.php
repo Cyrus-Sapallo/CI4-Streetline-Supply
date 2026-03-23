@@ -17,3 +17,8 @@ $routes->get('cart', 'Cart::index');
 $routes->post('cart/add', 'Cart::add');
 $routes->post('cart/update', 'Cart::update');
 $routes->post('cart/remove', 'Cart::remove');
+
+// Checkout Routes
+$routes->get('checkout', 'Checkout::index');
+$routes->post('checkout/process', 'Checkout::process');
+$routes->get('checkout/success/(:num)', 'Checkout::success/$1');
