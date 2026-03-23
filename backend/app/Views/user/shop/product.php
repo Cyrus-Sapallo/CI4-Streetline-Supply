@@ -78,9 +78,13 @@
                 <div class="flex gap-4 mt-8">
 
                     <!-- Add to Cart -->
-                    <button class="bg-vermillion hover:opacity-90 px-6 py-3 rounded-lg font-semibold">
-                        Add to Cart
-                    </button>
+                    <form action="<?= base_url('cart/add') ?>" method="POST">
+                        <input type="hidden" name="product_id" value="<?= $product['id'] ?>">
+                        <input type="hidden" name="quantity" value="1">
+                        <button type="submit" class="bg-vermillion hover:opacity-90 px-6 py-3 rounded-lg font-semibold">
+                            Add to Cart
+                        </button>
+                    </form>
 
                     <!-- Back -->
                     <a href="<?= base_url('shop') ?>"

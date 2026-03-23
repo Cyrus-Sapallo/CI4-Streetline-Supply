@@ -74,9 +74,13 @@
                             View
                         </a>
 
-                        <button class="bg-red-600 hover:bg-red-700 px-3 py-1 rounded text-sm">
-                            Add to Cart
-                        </button>
+                        <form action="<?= base_url('cart/add') ?>" method="POST" class="inline">
+                            <input type="hidden" name="product_id" value="<?= $product['id'] ?>">
+                            <input type="hidden" name="quantity" value="1">
+                            <button type="submit" class="bg-red-600 hover:bg-red-700 px-3 py-1 rounded text-sm">
+                                Add to Cart
+                            </button>
+                        </form>
                     </div>
 
                 </div>
