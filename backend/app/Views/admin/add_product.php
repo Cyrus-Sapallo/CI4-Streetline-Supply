@@ -4,6 +4,7 @@
 
     <input type="text" name="name" placeholder="Product Name" required>
     <input type="number" name="price" placeholder="Price" required>
+    <input type="number" name="stock" placeholder="Stock" min="0" required>
 
     <select name="category" required>
         <option value="Decks">Decks</option>
