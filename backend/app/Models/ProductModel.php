@@ -22,7 +22,6 @@ class ProductModel extends Model
         'image',
         'category'
     ];
-<<<<<<< HEAD
 
     // Dates
     protected $useTimestamps = true;
@@ -30,6 +29,3 @@ class ProductModel extends Model
     protected $createdField  = 'created_at';
     protected $updatedField  = 'updated_at';
 }
-=======
-}
->>>>>>> 872a3ecb4bfd9406979fbf790c0a43a2930ad869

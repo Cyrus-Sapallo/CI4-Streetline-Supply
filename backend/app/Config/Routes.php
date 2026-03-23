@@ -43,3 +43,9 @@ $routes->post('admin/deleteProduct/(:num)', 'Admin::deleteProduct/$1');
 // Shop and Cart Routes
 $routes->get('shop', 'Shop::index');
 $routes->get('product/(:num)', 'ProductController::view/$1');
+
+//wishlist
+//wishlist-mark
+$routes->get('wishlist', 'Wishlist::index');
+$routes->get('wishlist/add/(:num)', 'Wishlist::add/$1');
+$routes->get('wishlist/remove/(:num)', 'Wishlist::remove/$1');

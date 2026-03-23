@@ -72,7 +72,7 @@
             <!-- Image -->
             <div class="bg-[#1E1E1E] p-6 rounded-xl">
                 <img src="<?= base_url($product['image']) ?>"
-                    class="w-full h-56 object-cover rounded-lg"
+                    class="rounded-lg w-full h-56 object-cover"
                     alt="<?= esc($product['name']) ?>">
             </div>
 
@@ -99,7 +99,7 @@
 
                 <div class="flex flex-wrap gap-4 mt-8">
 
-<<<<<<< HEAD
+
                     <!-- Add to Cart -->
                     <form action="<?= base_url('cart/add') ?>" method="POST">
                         <input type="hidden" name="product_id" value="<?= $product['id'] ?>">
@@ -108,7 +108,6 @@
                             Add to Cart
                         </button>
                     </form>
-=======
                     <?php if (isset($product['stock']) && $product['stock'] > 0): ?>
                         <button class="bg-vermillion hover:opacity-90 px-6 py-3 rounded-lg font-semibold">
                             Add to Cart
@@ -120,13 +119,12 @@
                     <?php endif; ?>
 
                     <a href="<?= base_url('wishlist/add/' . $product['id']) ?>"
-                        class="px-6 py-3 border border-vermillion rounded-lg text-vermillion hover:bg-vermillion hover:text-white font-semibold">
+                        class="hover:bg-vermillion px-6 py-3 border border-vermillion rounded-lg font-semibold text-vermillion hover:text-white">
                         ❤️ Add to Wishlist
                     </a>
->>>>>>> 872a3ecb4bfd9406979fbf790c0a43a2930ad869
 
                     <a href="<?= base_url('shop') ?>"
-                        class="hover:bg-vermillion px-6 py-3 border border-vermillion rounded-lg text-vermillion hover:text-white font-semibold">
+                        class="hover:bg-vermillion px-6 py-3 border border-vermillion rounded-lg font-semibold text-vermillion hover:text-white">
                         Back to Shop
                     </a>
 

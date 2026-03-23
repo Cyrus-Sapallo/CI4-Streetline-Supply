@@ -87,7 +87,6 @@
                             <p class="mt-1 text-red-500 text-sm">Out of Stock</p>
                         <?php endif; ?>
 
-<<<<<<< HEAD
                         <form action="<?= base_url('cart/add') ?>" method="POST" class="inline">
                             <input type="hidden" name="product_id" value="<?= $product['id'] ?>">
                             <input type="hidden" name="quantity" value="1">
@@ -95,7 +94,6 @@
                                 Add to Cart
                             </button>
                         </form>
-=======
                         <div class="flex flex-wrap gap-2 mt-3">
                             <a href="<?= base_url('product/' . $product['id']) ?>"
                                 class="hover:bg-red-600 px-3 py-1 border border-red-600 rounded text-red-600 hover:text-white text-sm">
@@ -113,11 +111,10 @@
                             <?php endif; ?>
 
                             <a href="<?= base_url('wishlist/add/' . $product['id']) ?>"
-                                class="px-3 py-1 border border-red-600 rounded text-red-600 hover:bg-red-600 hover:text-white text-sm">
+                                class="hover:bg-red-600 px-3 py-1 border border-red-600 rounded text-red-600 hover:text-white text-sm">
                                 ❤️ Wishlist
                             </a>
                         </div>
->>>>>>> 872a3ecb4bfd9406979fbf790c0a43a2930ad869
                     </div>
 
                 </div>
