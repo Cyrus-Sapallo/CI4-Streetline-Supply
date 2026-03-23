@@ -11,12 +11,6 @@ $routes->get('/', 'Users::index');
 $routes->get('moodboard', 'Users::moodboard');
 $routes->get('roadmap', 'Users::roadmap');
 
-//profile
-$routes->get('profile', 'Users::profile');
-$routes->post('update-profile', 'Users::updateProfile');
-$routes->post('upload-profile', 'Users::uploadProfile');
-$routes->post('upload-profile', 'Users::uploadProfileImage');
-
 // FRONTEND (show pages)
 $routes->get('login', 'Users::login');   // shows login page
 $routes->get('signup', 'Users::signup'); // shows signup page
@@ -43,3 +37,8 @@ $routes->post('admin/deleteProduct/(:num)', 'Admin::deleteProduct/$1');
 //Shop Pages
 $routes->get('shop', 'Shop::index');
 $routes->get('product/(:num)', 'ProductController::view/$1');
+
+//wishlist-mark
+$routes->get('wishlist', 'Wishlist::index');
+$routes->get('wishlist/add/(:num)', 'Wishlist::add/$1');
+$routes->get('wishlist/remove/(:num)', 'Wishlist::remove/$1');
