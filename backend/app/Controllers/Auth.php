@@ -59,6 +59,7 @@ class Auth extends BaseController
             'last_name' => $userArr['last_name'] ?? null,
             'type' => $userArr['type'] ?? 'client',
             'display_name' => trim(($userArr['first_name'][0] ?? '') . ' ' . ($userArr['middle_name'][0] ?? '') . ' ' . ($userArr['last_name'] ?? '')),
+            'profile_image' => $userArr['profile_image'] ?? null,
         ]);
 
         // Redirect based on user type
