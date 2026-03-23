@@ -102,20 +102,34 @@
 
                     <!-- Add to Cart -->
                     <form action="<?= base_url('cart/add') ?>" method="POST">
+                        <?= csrf_field() ?>
                         <input type="hidden" name="product_id" value="<?= $product['id'] ?>">
                         <input type="hidden" name="quantity" value="1">
-                        <button type="submit" class="bg-vermillion hover:opacity-90 px-6 py-3 rounded-lg font-semibold">
+                        <button type="submit"
+                            class="bg-vermillion hover:opacity-90 px-6 py-3 rounded-lg font-semibold">
                             Add to Cart
                         </button>
                     </form>
+
                     <?php if (isset($product['stock']) && $product['stock'] > 0): ?>
-                        <button class="bg-vermillion hover:opacity-90 px-6 py-3 rounded-lg font-semibold">
-                            Add to Cart
-                        </button>
+
+                        <!-- Buy Now -->
+                        <form action="<?= base_url('cart/buyNow') ?>" method="POST">
+                            <?= csrf_field() ?>
+                            <input type="hidden" name="product_id" value="<?= $product['id'] ?>">
+                            <input type="hidden" name="quantity" value="1">
+                            <button type="submit"
+                                class="bg-white hover:bg-gray-200 px-6 py-3 rounded-lg font-semibold text-black">
+                                Buy Now
+                            </button>
+                        </form>
+
                     <?php else: ?>
+
                         <button class="bg-gray-600 px-6 py-3 rounded-lg font-semibold cursor-not-allowed" disabled>
                             Out of Stock
                         </button>
+
                     <?php endif; ?>
 
                     <a href="<?= base_url('wishlist/add/' . $product['id']) ?>"

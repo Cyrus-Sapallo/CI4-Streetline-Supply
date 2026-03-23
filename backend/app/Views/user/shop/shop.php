@@ -86,34 +86,52 @@
                         <?php else: ?>
                             <p class="mt-1 text-red-500 text-sm">Out of Stock</p>
                         <?php endif; ?>
-
-                        <form action="<?= base_url('cart/add') ?>" method="POST" class="inline">
-                            <input type="hidden" name="product_id" value="<?= $product['id'] ?>">
-                            <input type="hidden" name="quantity" value="1">
-                            <button type="submit" class="bg-red-600 hover:bg-red-700 px-3 py-1 rounded text-sm">
-                                Add to Cart
-                            </button>
-                        </form>
                         <div class="flex flex-wrap gap-2 mt-3">
+
+                            <!-- View -->
                             <a href="<?= base_url('product/' . $product['id']) ?>"
                                 class="hover:bg-red-600 px-3 py-1 border border-red-600 rounded text-red-600 hover:text-white text-sm">
                                 View
                             </a>
 
                             <?php if (isset($product['stock']) && $product['stock'] > 0): ?>
-                                <button class="bg-red-600 hover:bg-red-700 px-3 py-1 rounded text-sm">
-                                    Add to Cart
-                                </button>
+
+                                <!-- Add to Cart -->
+                                <form action="<?= base_url('cart/add') ?>" method="POST">
+                                    <?= csrf_field() ?>
+                                    <input type="hidden" name="product_id" value="<?= $product['id'] ?>">
+                                    <input type="hidden" name="quantity" value="1">
+                                    <button type="submit"
+                                        class="bg-red-600 hover:bg-red-700 px-3 py-1 rounded text-sm">
+                                        Add to Cart
+                                    </button>
+                                </form>
+
+                                <!-- Buy Now -->
+                                <form action="<?= base_url('cart/buyNow') ?>" method="POST">
+                                    <?= csrf_field() ?>
+                                    <input type="hidden" name="product_id" value="<?= $product['id'] ?>">
+                                    <input type="hidden" name="quantity" value="1">
+                                    <button type="submit"
+                                        class="bg-white hover:bg-gray-200 px-3 py-1 rounded text-black text-sm">
+                                        Buy Now
+                                    </button>
+                                </form>
+
                             <?php else: ?>
+
                                 <button class="bg-gray-600 px-3 py-1 rounded text-sm cursor-not-allowed" disabled>
                                     Out of Stock
                                 </button>
+
                             <?php endif; ?>
 
+                            <!-- Wishlist -->
                             <a href="<?= base_url('wishlist/add/' . $product['id']) ?>"
                                 class="hover:bg-red-600 px-3 py-1 border border-red-600 rounded text-red-600 hover:text-white text-sm">
                                 ❤️ Wishlist
                             </a>
+
                         </div>
                     </div>
 
