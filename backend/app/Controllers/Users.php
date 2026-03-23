@@ -68,20 +68,30 @@ class Users extends BaseController
     public function uploadProfile()
     {
         $session = session();
-        $sessionUser = $session->get('user');
+        $userModel = new UsersModel();
+
+        $userId = $session->get('user')['id'];
 
         $file = $this->request->getFile('profile_image');
-
-        if ($file && $file->isValid()) {
+        if ($file && $file->isValid() && !$file->hasMoved()) {
             $newName = $file->getRandomName();
-            $file->move('uploads/', $newName);
+            $file->move(ROOTPATH . 'public/uploads', $newName);
 
-            $userModel = new UsersModel();
-            $userModel->update($sessionUser['id'], [
-                'profile_image' => $newName
+            // Update DB
+            $userModel->update($userId, ['profile_image' => $newName]);
+
+            // ✅ Update session
+            $user = $userModel->find($userId);
+            $session->set('user', [
+                'id' => $user->id,
+                'first_name' => $user->first_name,
+                'last_name' => $user->last_name,
+                'email' => $user->email,
+                'type' => $user->type,
+                'profile_image' => $user->profile_image
             ]);
         }
 
-        return redirect()->to('/profile');
+        return redirect()->back();
     }
 }

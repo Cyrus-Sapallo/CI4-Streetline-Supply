@@ -81,6 +81,7 @@
 
                 <!-- Edit Details Form -->
                 <form id="profileForm" method="post" action="/update-profile" class="space-y-4">
+                    <?= csrf_field() ?>
                     <input
                         type="text"
                         name="first_name"
@@ -101,8 +102,9 @@
 
                 <!-- Profile Picture Upload Form -->
                 <form method="post" action="/upload-profile" enctype="multipart/form-data">
+                    <?= csrf_field() ?>
                     <label class="block mb-2 text-gray-400">Change Profile Picture:</label>
-                    <input type="file" name="profile_image" class="mb-3 text-white">
+                    <input type="file" name="profile_image" id="profileImageInput" class="mb-3 text-white"> <!-- ✅ added id -->
                     <br>
                     <button class="bg-vermillion px-4 py-2 rounded font-bold">Upload</button>
                 </form>
@@ -134,6 +136,23 @@
             editSection.classList.add('hidden'); // hide edit section
             editBtn.classList.remove('hidden'); // show edit button
         });
+    </script>
+    <script>
+        const profileInput = document.getElementById('profileImageInput');
+        const headerProfileImage = document.getElementById('headerProfileImage');
+
+        if (profileInput && headerProfileImage) {
+            profileInput.addEventListener('change', function(event) {
+                const file = event.target.files[0];
+                if (!file) return;
+
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    headerProfileImage.src = e.target.result; // Update header icon instantly
+                };
+                reader.readAsDataURL(file);
+            });
+        }
     </script>
 
 </body>
