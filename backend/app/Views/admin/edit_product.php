@@ -17,10 +17,8 @@
 
         <form action="<?= base_url('admin/updateProduct/' . $product['id']) ?>" method="post" enctype="multipart/form-data">
 
-            <!-- CSRF -->
             <?= csrf_field() ?>
 
-            <!-- NAME -->
             <div class="mb-4">
                 <label class="block mb-1 text-gray-300">Product Name</label>
                 <input type="text"
@@ -29,7 +27,6 @@
                     class="bg-gray-700 p-2 border border-gray-600 rounded focus:outline-none w-full">
             </div>
 
-            <!-- PRICE -->
             <div class="mb-4">
                 <label class="block mb-1 text-gray-300">Price</label>
                 <input type="number"
@@ -38,7 +35,15 @@
                     class="bg-gray-700 p-2 border border-gray-600 rounded focus:outline-none w-full">
             </div>
 
-            <!-- CATEGORY -->
+            <div class="mb-4">
+                <label class="block mb-1 text-gray-300">Stock</label>
+                <input type="number"
+                    name="stock"
+                    value="<?= esc($product['stock']) ?>"
+                    min="0"
+                    class="bg-gray-700 p-2 border border-gray-600 rounded focus:outline-none w-full">
+            </div>
+
             <div class="mb-4">
                 <label class="block mb-1 text-gray-300">Category</label>
                 <input type="text"
@@ -47,21 +52,17 @@
                     class="bg-gray-700 p-2 border border-gray-600 rounded focus:outline-none w-full">
             </div>
 
-            <!-- CURRENT IMAGE -->
             <div class="mb-4">
                 <p class="mb-2 text-gray-400">Current Image:</p>
                 <img src="<?= base_url($product['image']) ?>" class="rounded w-32 h-32 object-cover">
             </div>
 
-            <!-- NEW IMAGE -->
             <div class="mb-6">
                 <label class="block mb-1 text-gray-300">Change Image</label>
                 <input type="file" name="image" class="bg-gray-700 p-2 border border-gray-600 rounded w-full">
             </div>
 
-            <!-- BUTTONS -->
             <div class="flex gap-4">
-
                 <button type="submit"
                     class="bg-green-500 hover:bg-green-600 px-5 py-2 rounded font-semibold text-white">
                     Update Product
@@ -71,7 +72,6 @@
                     class="bg-gray-600 hover:bg-gray-700 px-5 py-2 rounded font-semibold text-white">
                     Cancel
                 </a>
-
             </div>
 
         </form>

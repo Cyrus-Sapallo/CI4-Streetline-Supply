@@ -37,6 +37,8 @@
 
 <body>
 
+    <?php $wishlistCount = count(session()->get('wishlist') ?? []); ?>
+
     <!-- Header -->
     <?= view('components/header', [
         'brandTitle' => 'Streetline Supply',
@@ -45,6 +47,7 @@
         'nav' => [
             ['label' => 'Home', 'href' => base_url('/')],
             ['label' => 'Shop', 'href' => base_url('shop')],
+            ['label' => 'Wishlist (' . $wishlistCount . ')', 'href' => base_url('wishlist')],
         ],
         'cta' => ['label' => 'Cart', 'href' => base_url('cart')],
     ]) ?>
@@ -52,39 +55,76 @@
     <!-- Product Section -->
     <main class="mx-auto px-6 py-16 max-w-6xl">
 
+        <?php if (session()->getFlashdata('success')): ?>
+            <div class="bg-green-600 mb-6 px-4 py-3 rounded-lg text-white">
+                <?= session()->getFlashdata('success') ?>
+            </div>
+        <?php endif; ?>
+
+        <?php if (session()->getFlashdata('error')): ?>
+            <div class="bg-red-600 mb-6 px-4 py-3 rounded-lg text-white">
+                <?= session()->getFlashdata('error') ?>
+            </div>
+        <?php endif; ?>
+
         <div class="gap-10 grid grid-cols-1 md:grid-cols-2">
 
             <!-- Image -->
             <div class="bg-[#1E1E1E] p-6 rounded-xl">
-                <img src="<?= base_url($product['image']) ?>
-                " class="w-full h-56 object-cover">
+                <img src="<?= base_url($product['image']) ?>"
+                    class="rounded-lg w-full h-56 object-cover"
+                    alt="<?= esc($product['name']) ?>">
             </div>
 
             <!-- Details -->
             <div>
 
                 <h1 class="font-bebas text-5xl tracking-wide">
-                    <?= $product['name'] ?>
+                    <?= esc($product['name']) ?>
                 </h1>
 
                 <p class="mt-4 font-semibold text-vermillion text-2xl">
-                    $<?= $product['price'] ?>
+                    $<?= esc($product['price']) ?>
                 </p>
+
+                <?php if (isset($product['stock']) && $product['stock'] > 0): ?>
+                    <p class="mt-2 text-green-400">In Stock (<?= esc($product['stock']) ?>)</p>
+                <?php else: ?>
+                    <p class="mt-2 text-red-500">Out of Stock</p>
+                <?php endif; ?>
 
                 <p class="mt-6 text-gray-300">
                     High-quality Streetline Supply product built for durability and style. Perfect for real skaters who want performance and attitude.
                 </p>
 
-                <div class="flex gap-4 mt-8">
+                <div class="flex flex-wrap gap-4 mt-8">
+
 
                     <!-- Add to Cart -->
-                    <button class="bg-vermillion hover:opacity-90 px-6 py-3 rounded-lg font-semibold">
-                        Add to Cart
-                    </button>
+                    <form action="<?= base_url('cart/add') ?>" method="POST">
+                        <input type="hidden" name="product_id" value="<?= $product['id'] ?>">
+                        <input type="hidden" name="quantity" value="1">
+                        <button type="submit" class="bg-vermillion hover:opacity-90 px-6 py-3 rounded-lg font-semibold">
+                            Add to Cart
+                        </button>
+                    </form>
+                    <?php if (isset($product['stock']) && $product['stock'] > 0): ?>
+                        <button class="bg-vermillion hover:opacity-90 px-6 py-3 rounded-lg font-semibold">
+                            Add to Cart
+                        </button>
+                    <?php else: ?>
+                        <button class="bg-gray-600 px-6 py-3 rounded-lg font-semibold cursor-not-allowed" disabled>
+                            Out of Stock
+                        </button>
+                    <?php endif; ?>
 
-                    <!-- Back -->
+                    <a href="<?= base_url('wishlist/add/' . $product['id']) ?>"
+                        class="hover:bg-vermillion px-6 py-3 border border-vermillion rounded-lg font-semibold text-vermillion hover:text-white">
+                        ❤️ Add to Wishlist
+                    </a>
+
                     <a href="<?= base_url('shop') ?>"
-                        class="hover:bg-vermillion px-6 py-3 border border-vermillion rounded-lg text-vermillion hover:text-white">
+                        class="hover:bg-vermillion px-6 py-3 border border-vermillion rounded-lg font-semibold text-vermillion hover:text-white">
                         Back to Shop
                     </a>
 
