@@ -40,6 +40,10 @@ $routes->get('admin/editProduct/(:num)', 'Admin::editProduct/$1');
 $routes->post('admin/updateProduct/(:num)', 'Admin::updateProduct/$1');
 $routes->post('admin/deleteProduct/(:num)', 'Admin::deleteProduct/$1');
 
+// Add Product
+$routes->get('admin/products/create', 'Admin::createProduct');   // Show form
+$routes->post('admin/products/store', 'Admin::saveProduct');     // Handle submission
+
 // Shop and Cart Routes
 $routes->get('shop', 'Shop::index');
 $routes->get('product/(:num)', 'ProductController::view/$1');

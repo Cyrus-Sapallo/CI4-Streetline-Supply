@@ -8,14 +8,16 @@ class AddStockToProducts extends Migration
 {
     public function up()
     {
-        $this->forge->addColumn('products', [
-            'stock' => [
-                'type'       => 'INT',
-                'constraint' => 11,
-                'default'    => 0,
-                'after'      => 'price',
-            ],
-        ]);
+        if (!$this->db->fieldExists('stock', 'products')) {
+            $this->forge->addColumn('products', [
+                'stock' => [
+                    'type'       => 'INT',
+                    'constraint' => 11,
+                    'default'    => 0,
+                    'after'      => 'price',
+                ],
+            ]);
+        }
     }
 
     public function down()
