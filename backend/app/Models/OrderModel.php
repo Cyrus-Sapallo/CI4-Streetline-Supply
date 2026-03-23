@@ -13,6 +13,7 @@ class OrderModel extends Model
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
     protected $allowedFields    = [
+        'user_id',
         'customer_name', 
         'email', 
         'phone', 

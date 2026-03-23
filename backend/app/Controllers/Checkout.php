@@ -61,6 +61,7 @@ class Checkout extends BaseController
 
         $orderModel = new OrderModel();
         $orderData = [
+            'user_id'         => session()->get('user_id') ?? null,
             'customer_name'   => $this->request->getPost('customer_name'),
             'email'           => $this->request->getPost('email'),
             'phone'           => $this->request->getPost('phone'),

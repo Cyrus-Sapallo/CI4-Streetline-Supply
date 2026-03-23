@@ -16,6 +16,11 @@ class CreateOrderTables extends Migration
                 'unsigned'       => true,
                 'auto_increment' => true,
             ],
+            'user_id' => [
+                'type'       => 'INT',
+                'unsigned'   => true,
+                'null'       => true,
+            ],
             'customer_name' => [
                 'type'       => 'VARCHAR',
                 'constraint' => '255',
