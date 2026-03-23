@@ -68,7 +68,7 @@
                         $u = $session->get('user');
                         $type = is_array($u) ? ($u['type'] ?? 'client') : (method_exists($u, 'toArray') ? ($u->toArray()['type'] ?? 'client') : 'client');
                         if (strtolower($type) !== 'client'):
-                            $dash = strtolower($type) === 'manager' ? base_url('admin/dashboard') : base_url('employee/dashboard');
+                            $dash = strtolower($type) === 'manager' ? base_url('admin/dashboard') : base_url('admin/dashboard');
                         ?>
                             <a href="<?= esc($dash) ?>" class="block hover:bg-gray-800 px-4 py-2 text-sm">Dashboard</a>
                         <?php endif; ?>

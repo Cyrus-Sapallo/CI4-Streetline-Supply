@@ -11,6 +11,11 @@ $routes->get('/', 'Users::index');
 $routes->get('moodboard', 'Users::moodboard');
 $routes->get('roadmap', 'Users::roadmap');
 
+//profile
+$routes->get('profile', 'Users::profile');
+$routes->post('update-profile', 'Users::updateProfile');
+$routes->post('upload-profile', 'Users::uploadProfile');
+
 // FRONTEND (show pages)
 $routes->get('login', 'Users::login');   // shows login page
 $routes->get('signup', 'Users::signup'); // shows signup page
