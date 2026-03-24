@@ -29,7 +29,8 @@
         <nav class="flex items-center space-x-5 font-medium text-sm">
             <?php $session = session(); ?>
             <?php 
-            $cartCount = count($session->get('cart') ?? []); 
+            $cartData = $session->get('cart');
+            $cartCount = is_array($cartData) ? count($cartData) : 0; 
             $wishlistCount = count($session->get('wishlist') ?? []); 
             ?>
 
