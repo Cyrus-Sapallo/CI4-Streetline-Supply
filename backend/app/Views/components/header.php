@@ -29,8 +29,7 @@
         <nav class="flex items-center space-x-5 font-medium text-sm">
             <?php $session = session(); ?>
             <?php 
-            $cart = $session->get('cart') ?? [];
-            $cartCount = array_sum(array_column($cart, 'quantity')); 
+            $cartCount = count($session->get('cart') ?? []); 
             $wishlistCount = count($session->get('wishlist') ?? []); 
             ?>
 
