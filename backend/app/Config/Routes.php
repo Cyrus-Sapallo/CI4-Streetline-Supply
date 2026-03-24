@@ -51,14 +51,13 @@ $routes->get('cart', 'Cart::index');
 $routes->post('cart/add', 'Cart::add');
 $routes->post('cart/update', 'Cart::update');
 $routes->post('cart/remove', 'Cart::remove');
-$routes->post('cart/buyNow', 'Cart::buyNow');
 
 // Checkout Routes
 $routes->get('checkout', 'Checkout::index');
 $routes->post('checkout/process', 'Checkout::process');
 $routes->get('checkout/success/(:num)', 'Checkout::success/$1');
 
-//wishlist
+
 //wishlist-mark
 $routes->get('wishlist', 'Wishlist::index');
 $routes->get('wishlist/add/(:num)', 'Wishlist::add/$1');
