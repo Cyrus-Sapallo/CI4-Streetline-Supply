@@ -7,7 +7,6 @@ use App\Models\RequestModel;
 
 class Admin extends BaseController
 {
-    // DASHBOARD
     public function dashboard()
     {
         $productModel = new ProductModel();
@@ -16,8 +15,6 @@ class Admin extends BaseController
 
         $data = [
             'products' => $productModel->findAll(),
-
-            // DASHBOARD STATS
             'stats' => [
                 [
                     'title' => 'Total Products',
@@ -35,8 +32,6 @@ class Admin extends BaseController
                     'icon' => '🛒'
                 ],
             ],
-
-            // RECENT REQUESTS
             'requests' => $requestModel
                 ->orderBy('id', 'DESC')
                 ->findAll(5),
@@ -58,15 +53,11 @@ class Admin extends BaseController
     public function requests()
     {
         $model = new RequestModel();
-
         $data['requests'] = $model->findAll();
 
         return view('admin/requests', $data);
     }
 
-    // =========================
-    // CREATE (already have saveProduct)
-    // =========================
     public function saveProduct()
     {
         $validation = \Config\Services::validation();
@@ -74,6 +65,7 @@ class Admin extends BaseController
         $validation->setRules([
             'name' => 'required|min_length[3]',
             'price' => 'required|numeric',
+            'stock' => 'required|integer',
             'category' => 'required'
         ]);
 
@@ -99,6 +91,7 @@ class Admin extends BaseController
         $model->insert([
             'name' => $this->request->getPost('name'),
             'price' => $this->request->getPost('price'),
+            'stock' => $this->request->getPost('stock'),
             'category' => $this->request->getPost('category'),
             'image' => 'uploads/' . $newName,
         ]);
@@ -106,21 +99,14 @@ class Admin extends BaseController
         return redirect()->to('/admin/dashboard')->with('success', 'Product added successfully');
     }
 
-    // =========================
-    // EDIT
-    // =========================
     public function editProduct($id)
     {
         $model = new ProductModel();
-
         $data['product'] = $model->find($id);
 
         return view('admin/edit_product', $data);
     }
 
-    // =========================
-    // UPDATE
-    // =========================
     public function updateProduct($id)
     {
         $model = new ProductModel();
@@ -128,6 +114,7 @@ class Admin extends BaseController
         $data = [
             'name' => $this->request->getPost('name'),
             'price' => $this->request->getPost('price'),
+            'stock' => $this->request->getPost('stock'),
             'category' => $this->request->getPost('category'),
         ];
 
@@ -149,15 +136,16 @@ class Admin extends BaseController
         return redirect()->to('/admin/dashboard')->with('success', 'Product updated successfully');
     }
 
-    // =========================
-    // DELETE
-    // =========================
     public function deleteProduct($id)
     {
         $model = new ProductModel();
-
         $model->delete($id);
 
         return redirect()->to('/admin/dashboard')->with('success', 'Product deleted successfully');
+    }
+    public function createProduct()
+    {
+        // Display the "Add Product" form
+        return view('admin/products_create');
     }
 }

@@ -40,15 +40,16 @@ $routes->get('admin/editProduct/(:num)', 'Admin::editProduct/$1');
 $routes->post('admin/updateProduct/(:num)', 'Admin::updateProduct/$1');
 $routes->post('admin/deleteProduct/(:num)', 'Admin::deleteProduct/$1');
 
+// Add Product
+$routes->get('admin/products/create', 'Admin::createProduct');   // Show form
+$routes->post('admin/products/store', 'Admin::saveProduct');     // Handle submission
+
 // Shop and Cart Routes
 $routes->get('shop', 'Shop::index');
 $routes->get('product/(:num)', 'ProductController::view/$1');
-$routes->get('cart', 'Cart::index');
-$routes->post('cart/add', 'Cart::add');
-$routes->post('cart/update', 'Cart::update');
-$routes->post('cart/remove', 'Cart::remove');
 
-// Checkout Routes
-$routes->get('checkout', 'Checkout::index');
-$routes->post('checkout/process', 'Checkout::process');
-$routes->get('checkout/success/(:num)', 'Checkout::success/$1');
+//wishlist
+//wishlist-mark
+$routes->get('wishlist', 'Wishlist::index');
+$routes->get('wishlist/add/(:num)', 'Wishlist::add/$1');
+$routes->get('wishlist/remove/(:num)', 'Wishlist::remove/$1');

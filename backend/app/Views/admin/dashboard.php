@@ -36,9 +36,14 @@
             <?php endforeach; ?>
         </section>
 
-        <!-- PRODUCTS -->
         <section class="bg-gray-800 shadow-lg p-6 rounded-lg">
-            <h2 class="mb-4 font-bold text-2xl">Products</h2>
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="font-bold text-2xl">Products</h2>
+                <a href="<?= base_url('admin/products/create') ?>"
+                    class="bg-red-600 hover:bg-red-700 px-4 py-2 rounded text-white">
+                    + Add Product
+                </a>
+            </div>
 
             <table class="w-full text-left border-collapse">
                 <thead>
@@ -58,21 +63,14 @@
                                 <td class="p-2">
                                     <img src="<?= base_url($product['image']) ?>" class="rounded w-16 h-16 object-cover">
                                 </td>
-
                                 <td class="p-2"><?= esc($product['name']) ?></td>
                                 <td class="p-2">$<?= esc($product['price']) ?></td>
                                 <td class="p-2"><?= esc($product['category']) ?></td>
-
-                                <!-- CRUD BUTTONS -->
                                 <td class="flex gap-2 p-2">
-
-                                    <!-- EDIT -->
                                     <?= view('components/buttons/button_secondary', [
                                         'label' => 'Edit',
                                         'href' => base_url('admin/editProduct/' . $product['id'])
                                     ]) ?>
-
-                                    <!-- DELETE (SAFE FORM) -->
                                     <form action="<?= base_url('admin/deleteProduct/' . $product['id']) ?>" method="post">
                                         <?= csrf_field() ?>
                                         <button type="submit"
@@ -80,7 +78,6 @@
                                             Delete
                                         </button>
                                     </form>
-
                                 </td>
                             </tr>
                         <?php endforeach; ?>
@@ -94,7 +91,6 @@
                 </tbody>
             </table>
         </section>
-
         <!-- REQUESTS -->
         <section class="bg-gray-800 shadow-lg mt-10 p-6 rounded-lg">
             <h2 class="mb-4 font-bold text-2xl">Recent Requests</h2>

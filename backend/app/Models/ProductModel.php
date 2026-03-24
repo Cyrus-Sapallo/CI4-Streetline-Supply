@@ -18,6 +18,7 @@ class ProductModel extends Model
         'excerpt',
         'description',
         'price',
+        'stock',
         'image',
         'category'
     ];
