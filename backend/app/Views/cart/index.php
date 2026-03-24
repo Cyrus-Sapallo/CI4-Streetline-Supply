@@ -64,6 +64,7 @@
                                         <td class="p-4 text-gray-300">$<?= number_format($item['price'], 2) ?></td>
                                         <td class="p-4">
                                             <form action="<?= base_url('cart/update') ?>" method="post" class="flex items-center gap-2">
+                                                <?= csrf_field() ?>
                                                 <input type="hidden" name="product_id" value="<?= $item['id'] ?>" />
                                                 <input type="number" name="quantity" value="<?= $item['quantity'] ?>" min="1" class="w-16 bg-black border border-gray-700 rounded text-center text-white py-1" />
                                                 <button type="submit" class="text-xs bg-gray-700 hover:bg-gray-600 text-white py-1 px-2 rounded">Update</button>
@@ -74,6 +75,7 @@
                                         </td>
                                         <td class="p-4 text-right">
                                             <form action="<?= base_url('cart/remove') ?>" method="post">
+                                                <?= csrf_field() ?>
                                                 <input type="hidden" name="product_id" value="<?= $item['id'] ?>" />
                                                 <button type="submit" class="text-red-500 hover:text-red-400" title="Remove Item">
                                                     <svg class="w-6 h-6 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24">

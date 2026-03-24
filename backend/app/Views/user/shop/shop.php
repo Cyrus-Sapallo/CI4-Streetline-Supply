@@ -23,9 +23,9 @@
             ['label' => 'Home', 'href' => base_url('/')],
             ['label' => 'Shop', 'href' => base_url('shop'), 'active' => true],
             ['label' => 'Roadmap', 'href' => base_url('roadmap')],
-            ['label' => 'Wishlist (' . $wishlistCount . ')', 'href' => base_url('wishlist')],
+            ['label' => 'Wishlist', 'href' => base_url('wishlist')],
         ],
-        'cta' => ['label' => 'Cart (0)', 'href' => base_url('cart')],
+        'cta' => ['label' => 'Cart', 'href' => base_url('cart')],
     ]) ?>
 
     <main class="mx-auto px-6 py-12 max-w-7xl">
@@ -97,23 +97,21 @@
                             <?php if (isset($product['stock']) && $product['stock'] > 0): ?>
 
                                 <!-- Add to Cart -->
-                                <form action="<?= base_url('cart/add') ?>" method="POST">
+                                <form action="<?= base_url('cart/add') ?>" method="POST" class="inline">
                                     <?= csrf_field() ?>
                                     <input type="hidden" name="product_id" value="<?= $product['id'] ?>">
                                     <input type="hidden" name="quantity" value="1">
-                                    <button type="submit"
-                                        class="bg-red-600 hover:bg-red-700 px-3 py-1 rounded text-sm">
+                                    <button type="submit" class="bg-red-600 hover:bg-red-700 px-3 py-1 rounded text-sm">
                                         Add to Cart
                                     </button>
                                 </form>
 
-                                <!-- Buy Now -->
-                                <form action="<?= base_url('cart/buyNow') ?>" method="POST">
+                                <!-- Buy Now (redirect to checkout directly) -->
+                                <form action="<?= base_url('cart/buyNow') ?>" method="POST" class="inline">
                                     <?= csrf_field() ?>
                                     <input type="hidden" name="product_id" value="<?= $product['id'] ?>">
                                     <input type="hidden" name="quantity" value="1">
-                                    <button type="submit"
-                                        class="bg-white hover:bg-gray-200 px-3 py-1 rounded text-black text-sm">
+                                    <button type="submit" class="bg-white hover:bg-gray-200 px-3 py-1 rounded text-black text-sm">
                                         Buy Now
                                     </button>
                                 </form>
@@ -133,7 +131,6 @@
                             </a>
 
                         </div>
-                    </div>
 
                 </div>
 

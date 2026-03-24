@@ -52,6 +52,7 @@
                             <span class="text-green-500 font-bold text-2xl">$<?= number_format($product['price'], 2) ?></span>
                         </div>
                         <form action="<?= base_url('cart/add') ?>" method="post" class="mt-auto flex gap-2">
+                            <?= csrf_field() ?>
                             <input type="hidden" name="product_id" value="<?= $product['id'] ?>" />
                             <input type="number" name="quantity" value="1" min="1" class="w-16 bg-black border border-gray-700 rounded text-center text-white" />
                             <button type="submit" class="flex-1 bg-vermillion hover:bg-vermillion-dark text-white font-bold py-2 px-4 rounded transition">

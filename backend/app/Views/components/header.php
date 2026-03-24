@@ -28,11 +28,21 @@
         <!-- Navigation -->
         <nav class="flex items-center space-x-5 font-medium text-sm">
             <?php $session = session(); ?>
+            <?php $cartCount = count($session->get('cart') ?? []); ?>
+            <?php $wishlistCount = count($session->get('wishlist') ?? []); ?>
 
             <?php foreach ($nav ?? [] as $item): ?>
+                <?php
+                    $label = $item['label'] ?? '';
+                    if (stripos($label, 'cart') !== false) {
+                        $label = trim($label) . ' (' . $cartCount . ')';
+                    } elseif (stripos($label, 'wishlist') !== false) {
+                        $label = trim($label) . ' (' . $wishlistCount . ')';
+                    }
+                ?>
                 <a href="<?= esc($item['href'] ?? '#') ?>"
                     class="<?= !empty($item['active']) ? 'text-vermillion border-b-2 border-vermillion font-semibold' : 'hover:text-vermillion' ?>">
-                    <?= esc($item['label'] ?? '') ?>
+                    <?= esc($label) ?>
                 </a>
             <?php endforeach; ?>
 

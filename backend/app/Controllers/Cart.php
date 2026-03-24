@@ -92,4 +92,10 @@ class Cart extends BaseController
 
         return redirect()->to('/cart');
     }
+
+    public function buyNow()
+    {
+        $this->add();
+        return redirect()->to('/checkout');
+    }
 }

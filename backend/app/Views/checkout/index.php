@@ -31,6 +31,7 @@
         <h1 class="font-bold text-4xl text-vermillion uppercase tracking-wider mb-10">Checkout</h1>
 
         <form action="<?= base_url('checkout/process') ?>" method="post" id="checkoutForm">
+            <?= csrf_field() ?>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
                 <!-- Customer Details -->
                 <div class="space-y-6">
