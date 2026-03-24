@@ -23,10 +23,9 @@
             ['label' => 'Home', 'href' => base_url('/')],
             ['label' => 'Shop', 'href' => base_url('shop'), 'active' => true],
             ['label' => 'Roadmap', 'href' => base_url('roadmap')],
-            ['label' => 'Cart', 'href' => base_url('cart')],
             ['label' => 'Wishlist', 'href' => base_url('wishlist')],
         ],
-        'cta' => ['label' => 'Login', 'href' => base_url('login')],
+        'cta' => ['label' => 'Cart', 'href' => base_url('cart')],
     ]) ?>
 
     <main class="mx-auto px-6 py-12 max-w-7xl">
