@@ -47,8 +47,17 @@ $routes->post('admin/products/store', 'Admin::saveProduct');     // Handle submi
 // Shop and Cart Routes
 $routes->get('shop', 'Shop::index');
 $routes->get('product/(:num)', 'ProductController::view/$1');
+$routes->get('cart', 'Cart::index');
+$routes->post('cart/add', 'Cart::add');
+$routes->post('cart/update', 'Cart::update');
+$routes->post('cart/remove', 'Cart::remove');
 
-//wishlist
+// Checkout Routes
+$routes->get('checkout', 'Checkout::index');
+$routes->post('checkout/process', 'Checkout::process');
+$routes->get('checkout/success/(:num)', 'Checkout::success/$1');
+
+
 //wishlist-mark
 $routes->get('wishlist', 'Wishlist::index');
 $routes->get('wishlist/add/(:num)', 'Wishlist::add/$1');
