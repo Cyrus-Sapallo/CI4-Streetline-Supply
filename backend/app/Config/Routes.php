@@ -47,7 +47,6 @@ $routes->post('admin/products/store', 'Admin::saveProduct');     // Handle submi
 // Shop and Cart Routes
 $routes->get('shop', 'Shop::index');
 $routes->get('product/(:num)', 'ProductController::view/$1');
-<<<<<<< HEAD
 $routes->get('cart', 'Cart::index');
 $routes->post('cart/add', 'Cart::add');
 $routes->post('cart/update', 'Cart::update');
@@ -58,9 +57,6 @@ $routes->post('cart/buyNow', 'Cart::buyNow');
 $routes->get('checkout', 'Checkout::index');
 $routes->post('checkout/process', 'Checkout::process');
 $routes->get('checkout/success/(:num)', 'Checkout::success/$1');
-
-=======
->>>>>>> parent of 92461dc (fix(routes): update added cart routes)
 
 //wishlist
 //wishlist-mark
