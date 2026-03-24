@@ -28,8 +28,11 @@
         <!-- Navigation -->
         <nav class="flex items-center space-x-5 font-medium text-sm">
             <?php $session = session(); ?>
-            <?php $cartCount = count($session->get('cart') ?? []); ?>
-            <?php $wishlistCount = count($session->get('wishlist') ?? []); ?>
+            <?php 
+            $cart = $session->get('cart') ?? [];
+            $cartCount = array_sum(array_column($cart, 'quantity')); 
+            $wishlistCount = count($session->get('wishlist') ?? []); 
+            ?>
 
             <?php foreach ($nav ?? [] as $item): ?>
                 <?php
