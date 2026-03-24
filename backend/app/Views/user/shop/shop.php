@@ -13,7 +13,14 @@
 
 <body class="bg-black font-sans text-white">
 
-    <?php $wishlistCount = count(session()->get('wishlist') ?? []); ?>
+    <?php $wishlistCount = count(session()->get('wishlist') ?? []);
+    $cart = session()->get('cart') ?? [];
+    $cartCount = 0;
+
+    foreach ($cart as $item) {
+        $cartCount += $item['quantity'] ?? 1;
+    }
+    ?>
 
     <?= view('components/header', [
         'brandTitle' => 'Streetline Supply',
@@ -25,7 +32,7 @@
             ['label' => 'Roadmap', 'href' => base_url('roadmap')],
             ['label' => 'Wishlist (' . $wishlistCount . ')', 'href' => base_url('wishlist')],
         ],
-        'cta' => ['label' => 'Cart (0)', 'href' => base_url('cart')],
+        'cta' => ['label' => 'Cart (' . $cartCount . ')', 'href' => base_url('cart')],
     ]) ?>
 
     <main class="mx-auto px-6 py-12 max-w-7xl">
