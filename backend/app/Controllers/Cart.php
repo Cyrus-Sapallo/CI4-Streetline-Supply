@@ -16,7 +16,6 @@ class Cart extends BaseController
             $subtotal += $item['price'] * $item['quantity'];
         }
 
-        // Apply a mock shipping cost if cart is not empty
         $shipping = empty($cart) ? 0 : 15.00;
         $total = $subtotal + $shipping;
 
@@ -40,7 +39,6 @@ class Cart extends BaseController
         $product = $productModel->find($productId);
 
         if ($product) {
-            // Check if product already in cart
             if (isset($cart[$productId])) {
                 $cart[$productId]['quantity'] += $quantity;
             } else {
@@ -75,7 +73,7 @@ class Cart extends BaseController
             $session->set('cart', $cart);
         }
 
-        return redirect()->to('/cart');
+        return redirect()->back()->with('message', 'Cart updated!');
     }
 
     public function remove()
@@ -90,6 +88,6 @@ class Cart extends BaseController
             $session->set('cart', $cart);
         }
 
-        return redirect()->to('/cart');
+        return redirect()->back()->with('message', 'Item removed!');
     }
 }

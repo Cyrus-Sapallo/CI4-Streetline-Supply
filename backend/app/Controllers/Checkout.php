@@ -4,7 +4,6 @@ namespace App\Controllers;
 
 use App\Models\OrderModel;
 use App\Models\OrderItemModel;
-use CodeIgniter\Controller;
 
 class Checkout extends BaseController
 {
@@ -52,7 +51,7 @@ class Checkout extends BaseController
 
         $shippingMethod = $this->request->getPost('shipping_method');
         $shippingCost = ($shippingMethod === 'delivery') ? 15.00 : 0.00;
-        
+
         $subtotal = 0;
         foreach ($cart as $item) {
             $subtotal += $item['price'] * $item['quantity'];
